@@ -1,0 +1,21 @@
+{
+  "min_salary_month": 6000,
+  "max_age_days": 45,
+  "max_per_search": 40,
+  "exclude_title": ["intern", "internship", "driver", "warehouse assistant", "part time", "part-time"],
+  "jooble": { "enabled": true },
+  "jsearch": {
+    "enabled": true,
+    "country": "my",
+    "date_posted": "month",
+    "max_requests_per_run": 6
+  },
+  "searches": [
+    { "keywords": "export customer service", "location": "Kuala Lumpur" },
+    { "keywords": "export operations executive", "location": "Kuala Lumpur" },
+    { "keywords": "trade documentation executive", "location": "Kuala Lumpur" },
+    { "keywords": "logistics customer service", "location": "Kuala Lumpur" },
+    { "keywords": "global trade operations", "location": "Kuala Lumpur" },
+    { "keywords": "order management logistics", "location": "Kuala Lumpur" }
+  ]
+}
