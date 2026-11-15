@@ -1,0 +1,66 @@
+name: MyLife OS Daily Automation
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "jobs-verify | jobs | shopping | briefing | healthcheck | test-notify"
+        default: test-notify
+  schedule:
+    - cron: "0 22 * * *"
+    - cron: "45 22 * * *"
+    - cron: "15 23 * * *"
+    - cron: "0 4 * * *"
+    - cron: "0 15 * * *"
+    - cron: "0 0 * * *"
+    - cron: "0 10 * * *"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: mylife-automation
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: Pick command
+        id: pick
+        run: |
+          case "${{ github.event.schedule }}" in
+            "0 22 * * *")  echo "cmd=shopping" >> $GITHUB_OUTPUT ;;
+            "45 22 * * *") echo "cmd=gmail" >> $GITHUB_OUTPUT ;;
+            "15 23 * * *") echo "cmd=briefing" >> $GITHUB_OUTPUT ;;
+            "0 4 * * *")   echo "cmd=shopping" >> $GITHUB_OUTPUT ;;
+            "0 15 * * *")  echo "cmd=healthcheck" >> $GITHUB_OUTPUT ;;
+            "0 0 * * *"|"0 10 * * *") echo "cmd=jobs" >> $GITHUB_OUTPUT ;;
+            *) echo "cmd=${{ github.event.inputs.command }}" >> $GITHUB_OUTPUT ;;
+          esac
+      - run: python -m backend.main ${{ steps.pick.outputs.cmd }}
+      - if: steps.pick.outputs.cmd == 'gmail'
+        run: python -m backend.main calendar
+      - name: Commit data
+        if: steps.pick.outputs.cmd == 'jobs' || steps.pick.outputs.cmd == 'shopping'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "mylife-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || (git commit -m "data: update $(date -u +%F)" && git pull --rebase && git push && (gh api -X POST "repos/${{ github.repository }}/pages/builds" || true))
