@@ -21,7 +21,7 @@ jobs:
           TRAVELPAYOUTS_TOKEN: ${{ secrets.TRAVELPAYOUTS_TOKEN }}
           IGNAV_API_KEY: ${{ secrets.IGNAV_API_KEY }}
           BARK_KEY: ${{ secrets.BARK_KEY }}
-        run: python backend/flight_prices.py
+        run: python -P backend/flight_prices.py
       - name: Commit result
         run: |
           git config user.name "github-actions"
