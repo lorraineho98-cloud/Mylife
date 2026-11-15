@@ -39,6 +39,19 @@ nav button span{display:block;font-size:20px}
 nav button.on{color:var(--acc);font-weight:700}
 .done{text-decoration:line-through;color:var(--mute)}
 .empty{text-align:center;color:var(--mute);padding:20px 8px}
+.seg{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:2px}
+button.chip{border-radius:99px;padding:6px 12px;font-size:14px;white-space:nowrap}
+button.chip.on{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+select.auto{width:auto}
+details.card summary{cursor:pointer;font-weight:600}
+.job{border-left:5px solid var(--mute)}
+.job[data-s="已投"]{border-left-color:var(--acc)}
+.job[data-s="面试"]{border-left-color:var(--warn)}
+.job[data-s="Offer"]{border-left-color:var(--good)}
+.job[data-s="放弃"]{border-left-color:var(--bad);opacity:.6}
+.pay{font-weight:700;white-space:nowrap}
+.pay.hot{color:var(--good)}
+.pay.unk{color:var(--mute);font-weight:400;font-size:13px}
 </style>
 </head>
 <body>
@@ -48,7 +61,7 @@ nav button.on{color:var(--acc);font-weight:700}
 var K='mylife-os-v1',S=null;
 try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
 S=S||{prices:[],stock:[],tasks:[],watch:[],apps:[]};
-['prices','stock','tasks','watch','apps'].forEach(function(k){S[k]=S[k]||[]});
+ensure();
 var MP='https://www.michaelpage.com.my/job-detail/';
 var SEED=[
 {t:'Senior Global Import/Export (3PL/4PL) - Michael Page',n:'KL 混合 | RM90-120k/年 | 偏管理，需资深经验 | 2026年7月发布，确认是否仍开放',lo:7500,hi:10000,u:MP+'senior-global-importexport-3pl4pl-vendor-management/ref/jn-072026-7055243'},
@@ -58,6 +71,7 @@ var SEED=[
 {t:'Export Customer Service - FM Global Logistics',n:'KL | 薪资未公开 | 来源 Hiredly',u:'https://my.hiredly.com/jobs/jobs-malaysia-fm-global-logistics-job-export-customer-service'},
 {t:'Customer Care and Logistics Manager - Dover',n:'KL 混合 | 薪资未公开，要5年以上经验和带团队 | 职位编号 59727',u:'https://careers.dovercorporation.com/job/Kuala-Lumpur-Customer-Care-and-Logistics-Manager/1173247001'}];
 if(!S.seedJobs){SEED.forEach(function(j){S.watch.push({id:uid(),kind:'job',title:j.t,note:j.n,history:[],lo:j.lo==null?null:j.lo,hi:j.hi==null?null:j.hi,url:j.u,added:today()})});S.seedJobs=1;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+if(!S.bseed){if(!S.bjobs.length)S.bjobs=bSeed();S.bseed=1;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 var $=function(s){return document.querySelector(s)};
 var v=function(id){var e=document.getElementById(id);return e?e.value.trim():''};
@@ -153,17 +167,25 @@ function importList(a){
     if(S.watch.some(function(w){return w.kind==='job'&&((j.url&&w.url===j.url)||w.title.toLowerCase()===t.toLowerCase())})){dup++;return}
     S.watch.push({id:uid(),kind:'job',title:t,note:[j.location,j.hybrid?'混合/WFH':'',j.source,j.posted?'发布 '+j.posted:''].filter(Boolean).join(' | '),history:[],lo:lo,hi:hi,url:j.url||'',added:today()});add++});
   return{add:add,msg:'新增 '+add+'，低薪跳过 '+low+'，过期跳过 '+old+'，重复跳过 '+dup}}
+function importFlights(a){var n=0;a.forEach(function(f){if(!f||!f.name||!(f.price>0))return;
+    var w=S.watch.filter(function(x){return x.kind==='flight'&&x.title===f.name})[0];
+    if(!w){w={id:uid(),kind:'flight',title:f.name,note:'自动追踪 · 缓存参考价，订票前请到网站确认',history:[],url:f.url||''};S.watch.push(w)}
+    if(f.url)w.url=f.url;
+    if(f.live&&f.live.price>0)w.live=f.live;
+    (f.history&&f.history.length?f.history:[{date:f.date||today(),price:f.price}]).forEach(function(h){
+      if(!h||!(h.price>0)||!h.date||w.history.some(function(x){return x.date===h.date}))return;w.history.push({price:h.price,date:h.date});n++});
+    w.history.sort(function(a,b){return a.date<b.date?-1:1})});return n}
 function feedBase(){var u=S.jobFeed;return u?u.replace(/jobs_latest\.json.*$/,''):'data/'}
 function syncJobs(silent){
   var b=feedBase(),get=function(f){return fetch(b+f+'?t='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(a){if(!Array.isArray(a))throw 0;return a}).catch(function(){return null})};
-  Promise.all([get('jobs_latest.json'),get('prices_latest.json')]).then(function(x){
-    if(!x[0]&&!x[1]){if(!silent)alert('同步失败：要从 GitHub Pages 打开本页，或在下方填写职位源网址；仓库需为 Public，且已运行过 jobs');return}
+  Promise.all([get('jobs_latest.json'),get('prices_latest.json'),get('flights_latest.json')]).then(function(x){
+    if(!x[0]&&!x[1]&&!x[2]){if(!silent)alert('同步失败：要从 GitHub Pages 打开本页，或在下方填写职位源网址；仓库需为 Public，且已运行过 jobs');return}
     var r=x[0]?importList(x[0]):{add:0,msg:'职位源暂无数据'},np=0;
     (x[1]||[]).forEach(function(p){if(!p||!p.name||!(p.price>0))return;
       if(S.prices.some(function(q){return q.name===p.name&&q.store===p.store&&q.date===p.date}))return;
       S.prices.push({id:uid(),name:p.name,store:p.store||'',price:p.price,ml:p.ml||0,date:p.date||today()});np++});
-    S.lastSync=Date.now();save();
-    if(!silent)alert(r.msg+'；新增价格记录 '+np);if(!silent||r.add>0||np>0)render()})}
+    var nf=x[2]?importFlights(x[2]):0;S.lastSync=Date.now();save();
+    if(!silent)alert(r.msg+'；新增价格记录 '+np+'；新增机票价格 '+nf);if(!silent||r.add>0||np>0||nf>0)render()})}
 function viewFind(){
   var h='<h1>查找清单</h1><div class="card"><select id="w_kind">'+Object.keys(KINDS).map(function(k){return'<option value="'+k+'">'+KINDS[k]+'</option>'}).join('')+'</select>'
    +'<input id="w_title" style="margin-top:8px" placeholder="如 吉隆坡 到 东京 12月20日 / 巴生 租房 / 物流主管">'
@@ -179,7 +201,8 @@ function viewFind(){
       h+='<div class="card"><div class="row sp"><b>'+esc(w.title)+'</b>'+(last&&hs.length>1&&last.price<=min?'<span class="tag good">最低价</span>':'')+(k==='job'?salTag(w):'')+'</div>'
        +(w.note?'<div class="mute">'+esc(w.note)+'</div>':'')
        +(last?'<div style="margin-top:6px">最近 '+rm(last.price)+' <span class="mute">· 最低 '+rm(min)+' · '+hs.length+' 条</span></div>':'')
-       +(w.url?'<div style="margin-top:6px"><a href="'+esc(w.url)+'" target="_blank" rel="noopener" style="color:var(--acc)">打开职位页 ↗</a></div>':'')+'<div class="row" style="margin-top:8px"><input class="half" id="wp_'+w.id+'" type="number" step="0.01" inputmode="decimal" placeholder="'+(k==='job'?'薪资 RM':'价格 RM')+'"><button class="ghost" data-act="watchPrice" data-id="'+w.id+'">记录</button>'+(k==='job'?'<button class="ghost" data-act="applyJob" data-id="'+w.id+'">记为已投递</button>':'')+'<button class="ghost" data-act="delWatch" data-id="'+w.id+'">删除</button></div></div>'})});
+       +(w.live?'<div style="margin-top:6px"><span class="tag good">实时核对 '+esc(w.live.currency)+' '+w.live.price+'</span> <span class="mute">'+esc(String(w.live.checked_at||'').slice(5))+' · 出发 '+esc(String(w.live.departure_date||'').slice(5))+'</span></div>':'')
+       +(w.url?'<div style="margin-top:6px"><a href="'+esc(w.url)+'" target="_blank" rel="noopener" style="color:var(--acc)">'+(k==='job'?'打开职位页':'打开订票页')+' ↗</a></div>':'')+'<div class="row" style="margin-top:8px"><input class="half" id="wp_'+w.id+'" type="number" step="0.01" inputmode="decimal" placeholder="'+(k==='job'?'薪资 RM':'价格 RM')+'"><button class="ghost" data-act="watchPrice" data-id="'+w.id+'">记录</button>'+(k==='job'?'<button class="ghost" data-act="applyJob" data-id="'+w.id+'">记为已投递</button>':'')+'<button class="ghost" data-act="delWatch" data-id="'+w.id+'">删除</button></div></div>'})});
   return h}
 
 /* ---- 今日 ---- */
@@ -208,9 +231,9 @@ var STAGES=['已投递','面试中','Offer','已拒绝'];
 function careerDue(){var t=today(),o=[];S.apps.forEach(function(a){if(a.st==='已拒绝')return;
   if(a.int&&a.int>=t&&days(a.int,t)<=3)o.push([a,'面试 '+a.int.slice(5),'warn']);
   if(a.fu&&a.fu<=t&&a.st!=='Offer')o.push([a,'该跟进','bad'])});return o}
-function viewCareer(){
+function viewApps(){
   var t=today(),wk=S.apps.filter(function(a){return a.applied&&days(t,a.applied)<=7}),cnt=function(s){return S.apps.filter(function(a){return a.st===s}).length};
-  var h='<h1>求职管家</h1><div class="stats"><div class="stat"><b>'+wk.length+'</b><span class="mute">本周投递</span></div><div class="stat"><b>'+cnt('面试中')+'</b><span class="mute">面试中</span></div><div class="stat"><b>'+cnt('已投递')+'</b><span class="mute">等回复</span></div><div class="stat"><b>'+cnt('Offer')+'</b><span class="mute">Offer</span></div></div>'
+  var h='<div class="stats"><div class="stat"><b>'+wk.length+'</b><span class="mute">本周投递</span></div><div class="stat"><b>'+cnt('面试中')+'</b><span class="mute">面试中</span></div><div class="stat"><b>'+cnt('已投递')+'</b><span class="mute">等回复</span></div><div class="stat"><b>'+cnt('Offer')+'</b><span class="mute">Offer</span></div></div>'
    +'<div class="card"><input id="c_co" placeholder="公司 / 职位"><input id="c_role" style="margin-top:8px" placeholder="职称（可空）">'
    +'<div class="row" style="margin-top:8px"><input class="half" id="c_sal" type="number" inputmode="numeric" placeholder="月薪 RM"><input class="half" id="c_wfh" type="number" inputmode="numeric" placeholder="WFH 天/周"></div>'
    +'<input id="c_hr" style="margin-top:8px" placeholder="HR 联系方式（可空）">'
@@ -225,6 +248,99 @@ function viewCareer(){
      +(a.int||a.fu?'<div style="margin-top:6px">'+(a.int?'<span class="tag warn">面试 '+esc(a.int.slice(5))+'</span> ':'')+(a.fu?'<span class="tag">跟进 '+esc(a.fu.slice(5))+'</span>':'')+'</div>':'')
      +'<div class="row" style="margin-top:8px"><button class="ghost" data-act="stage" data-id="'+a.id+'">推进状态</button><button class="ghost" data-act="delApp" data-id="'+a.id+'">删除</button></div></div>'});
   return h}
+/* ---- 求职看板（合并自「KL 与巴生求职看板」）---- */
+function ensure(){
+  ['prices','stock','tasks','watch','apps','bjobs'].forEach(function(k){S[k]=S[k]||[]});
+  S.ck=S.ck||{day:'',done:{},last:{}};S.ck.done=S.ck.done||{};S.ck.last=S.ck.last||{}}
+var BSTAT=['想投','已投','面试','Offer','放弃'],BAREA=['吉隆坡','巴生','莎阿南','其他'],BMODE=['混合','现场','远程','待确认'];
+var BF={area:'全部',stat:'全部',min:true},BE=null,csub='board';
+var BSITES=[
+['Michael Page Malaysia','https://www.michaelpage.com.my','出口运营、贸易文件、全球共享服务，混合办公职位多。'],
+['Robert Walters Malaysia','https://www.robertwalters.com.my','供应链与采购分类，吉隆坡职位多，薪资常为面议。'],
+['Monroe Consulting Group','https://monroeconsulting.com/disciplines/supply-chain','供应链猎头，有客服运营经理类职位。'],
+['JAC Recruitment Malaysia','https://www.jac-recruitment.my','物流与供应链分类，有巴生货代客服职位。'],
+['Horizontal Talent','https://www.horizontaltalent.com','国际公司的物流经理职位，吉隆坡混合办公。'],
+['Faststream','https://www.faststream.com','偏货运与航运，有物流与货代分类。'],
+['JobStreet 货代职位','https://my.jobstreet.com/forwarding-jobs','巴生、莎阿南货代职位最多，建议设置职位提醒。'],
+['JobStreet 清关职位','https://my.jobstreet.com/declaration-executive-jobs','清关与报关，含巴生的经理级职位。'],
+['Hiredly','https://my.hiredly.com','含 Hiredly X 猎头发布的货代与客服职位。'],
+['JobLeads 马来西亚','https://www.jobleads.com/my','汇总猎头发布的 Port Klang 与吉隆坡职位。'],
+['Maukerja','https://www.maukerja.my/en/jobsearch/freight-forwarding-jobs-in-shah-alam','货代职位，薪资多在中低段。']];
+var BKW=['Forwarding Manager','Customer Service Manager','Export Customer Service','Logistics Manager','Export Operations','Customs Manager'];
+function bSeed(){return [
+{id:uid(),title:'Forwarding Manager',co:'JobStreet 搜索结果，公司待确认',area:'巴生',min:7000,max:10000,mode:'待确认',stat:'想投',link:'https://my.jobstreet.com/declaration-executive-jobs',note:'负责清关、空运和海运操作与合规。发布约 5 天，需先确认仍开放。'},
+{id:uid(),title:'Customer Service Operations Manager',co:'Monroe Consulting（客户为国际 4PL）',area:'其他',min:'',max:'',mode:'待确认',stat:'想投',link:'https://monroeconsulting.com/disciplines/supply-chain',note:'雪兰莪，永久职位，薪资面议。'},
+{id:uid(),title:'Logistics Manager',co:'Horizontal Talent',area:'吉隆坡',min:'',max:'',mode:'混合',stat:'想投',link:'https://www.horizontaltalent.com/job-board/M8328',note:'数据中心设备的全球运输，要求 5 年以上国际物流经验。'},
+{id:uid(),title:'Supply Logistics Executive',co:'LUXASIA',area:'吉隆坡',min:'',max:'',mode:'混合',stat:'想投',link:'https://apply.workable.com/luxasia/jobs/view/4DD0DFF2CF',note:'2026-10-01 发布，要求 3 年供应链经验，熟悉 Incoterms。级别可能低于目标。'}]}
+function bTop(j){return Number(j.max)||Number(j.min)||0}
+function bSafe(u){return /^https?:\/\//i.test(u||'')?u:''}
+function bPay(j){var a=Number(j.min)||0,b=Number(j.max)||0,f=function(n){return 'RM'+n.toLocaleString('en-US')};
+  if(!a&&!b)return{t:'薪资待确认',c:'unk'};
+  var t=a&&b&&a!==b?f(a)+' 到 '+f(b):f(a||b);return{t:t+' 每月',c:(b||a)>=minSal()?'hot':''}}
+function bOpts(arr,sel){return arr.map(function(x){return'<option'+(x===sel?' selected':'')+'>'+esc(x)+'</option>'}).join('')}
+function bNum(s,k){return Math.round(parseFloat(String(s).replace(/,/g,''))*(k?1000:1))}
+function bParseJob(t){
+  var o={title:'',co:'',area:'其他',min:'',max:'',mode:'待确认',link:''};
+  var lines=t.split(/\n/).map(function(l){return l.trim()}).filter(Boolean);
+  var u=t.match(/https?:\/\/[^\s)>\]]+/);if(u)o.link=u[0];
+  var tl=lines.filter(function(l){return !/^https?:\/\//i.test(l)})[0];if(tl)o.title=tl.slice(0,100);
+  for(var i=0;i<lines.length;i++){var c=lines[i].match(/^(?:company|employer|公司)\s*[:：]\s*(.+)/i);if(c){o.co=c[1].slice(0,80);break}}
+  var m=t.match(/(?:RM|MYR)\s?([\d,]+(?:\.\d+)?)\s*([kK])?/);
+  if(m){var a=bNum(m[1],m[2]),b=a,rest=t.slice(m.index+m[0].length),m2=rest.match(/^\s*(?:[-–—~]|to|到|至)\s*(?:RM|MYR)?\s?([\d,]+(?:\.\d+)?)\s*([kK])?/i);
+    if(m2)b=bNum(m2[1],m2[2]);
+    if(/per annum|annual|每年|p\.a\./i.test(t)&&b>=30000){a=Math.round(a/12);b=Math.round(b/12)}
+    o.min=a;o.max=b!==a?b:''}
+  if(/klang|巴生/i.test(t))o.area='巴生';else if(/kuala lumpur|\bKL\b|吉隆坡/i.test(t))o.area='吉隆坡';else if(/shah alam|莎阿南/i.test(t))o.area='莎阿南';
+  if(/hybrid|混合/i.test(t))o.mode='混合';else if(/remote|远程/i.test(t))o.mode='远程';else if(/on-?site|现场/i.test(t))o.mode='现场';
+  return o}
+function viewBoard(){
+  var G=minSal(),J=S.bjobs,c=function(s){return J.filter(function(j){return j.stat===s}).length};
+  var hot=J.filter(function(j){return j.stat!=='放弃'&&bTop(j)>=G}).length;
+  var e=BE?J.filter(function(j){return j.id===BE})[0]:null;if(!e)BE=null;
+  var o=e||{title:'',co:'',area:BAREA[0],min:'',max:'',mode:BMODE[0],stat:BSTAT[0],link:'',note:''};
+  var h='<div class="stats"><div class="stat"><b>'+J.length+'</b><span class="mute">职位总数</span></div><div class="stat"><b>'+hot+'</b><span class="mute">达到 RM'+G.toLocaleString('en-US')+'</span></div><div class="stat"><b>'+c('已投')+'</b><span class="mute">已投</span></div><div class="stat"><b>'+c('面试')+'</b><span class="mute">面试</span></div></div>';
+  h+='<details class="card" id="b_box"'+(e?' open':'')+'><summary>'+(e?'编辑职位':'添加职位')+'</summary>'
+   +'<textarea id="b_paste" rows="3" style="margin-top:8px" placeholder="粘贴职位文字（可含链接），识别后填入下面的表单"></textarea>'
+   +'<div class="row" style="margin-top:6px"><button class="ghost" data-act="bParse">识别并填入</button><span class="mute" id="b_msg"></span></div>'
+   +'<input id="b_title" style="margin-top:8px" placeholder="职称，如 Forwarding Manager" value="'+esc(o.title)+'">'
+   +'<input id="b_co" style="margin-top:8px" placeholder="公司或猎头" value="'+esc(o.co)+'">'
+   +'<div class="row" style="margin-top:8px"><select class="half" id="b_area" aria-label="地区">'+bOpts(BAREA,o.area)+'</select><select class="half" id="b_mode" aria-label="工作方式">'+bOpts(BMODE,o.mode)+'</select></div>'
+   +'<div class="row" style="margin-top:8px"><input class="half" id="b_min" type="number" inputmode="numeric" placeholder="月薪下限 RM" value="'+esc(o.min)+'"><input class="half" id="b_max" type="number" inputmode="numeric" placeholder="月薪上限 RM" value="'+esc(o.max)+'"></div>'
+   +'<select id="b_stat" style="margin-top:8px" aria-label="状态">'+bOpts(BSTAT,o.stat)+'</select>'
+   +'<input id="b_link" type="url" style="margin-top:8px" placeholder="职位链接 https://" value="'+esc(o.link)+'">'
+   +'<textarea id="b_note" rows="2" style="margin-top:8px" placeholder="备注（发布日期、要求、联系人）">'+esc(o.note)+'</textarea>'
+   +'<button class="full" data-act="bSave">'+(e?'保存修改':'保存职位')+'</button>'+(e?'<button class="ghost full" data-act="bCancel">取消编辑</button>':'')+'</details>';
+  h+='<div class="seg">'+['全部'].concat(BAREA).map(function(a){return'<button class="ghost chip'+(BF.area===a?' on':'')+'" data-act="bArea" data-id="'+a+'">'+a+'</button>'}).join('')+'</div>';
+  h+='<div class="row" style="margin-bottom:10px"><button class="ghost chip'+(BF.min?' on':'')+'" data-act="bMin">只看 RM'+G.toLocaleString('en-US')+' 以上</button>'
+   +'<select class="auto" data-act="bStatF" aria-label="按状态筛选"><option>全部状态</option>'+bOpts(BSTAT,BF.stat)+'</select>'
+   +'<button class="ghost" data-act="bCopy">复制清单</button></div>';
+  var rank={};BSTAT.forEach(function(s,i){rank[s]=i});
+  var list=J.filter(function(j){
+    if(BF.area!=='全部'&&j.area!==BF.area)return false;
+    if(BF.stat!=='全部'&&j.stat!==BF.stat)return false;
+    var top=bTop(j);if(BF.min&&top&&top<G)return false;return true})
+   .sort(function(a,b){return rank[a.stat]-rank[b.stat]||bTop(b)-bTop(a)});
+  if(!list.length)return h+'<div class="empty">没有符合条件的职位。放宽筛选，或点“添加职位”。</div>';
+  return h+list.map(function(j){var p=bPay(j),u=bSafe(j.link);
+    return'<div class="card job" data-s="'+esc(j.stat)+'"><div class="row sp" style="align-items:flex-start;flex-wrap:nowrap"><div><b>'+esc(j.title)+'</b><div class="mute">'+esc(j.co)+'</div></div><div class="pay '+p.c+'">'+p.t+'</div></div>'
+     +'<div class="row" style="margin:8px 0"><span class="tag">'+esc(j.area)+'</span><span class="tag">'+esc(j.mode)+'</span></div>'
+     +(j.note?'<div class="mute" style="margin-bottom:8px">'+esc(j.note)+'</div>':'')
+     +'<div class="row"><select class="auto" data-act="bStat" data-id="'+esc(j.id)+'" aria-label="更改状态">'+bOpts(BSTAT,j.stat)+'</select>'
+     +(u?'<a class="tag" style="text-decoration:none" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">打开职位 ↗</a>':'')
+     +'<button class="ghost" data-act="bEdit" data-id="'+esc(j.id)+'">编辑</button><button class="ghost" data-act="bDel" data-id="'+esc(j.id)+'">删除</button></div></div>'}).join('')}
+function viewSites(){
+  return BSITES.map(function(s){return'<div class="card"><a href="'+esc(s[1])+'" target="_blank" rel="noopener noreferrer" style="color:var(--acc);font-weight:700">'+esc(s[0])+' ↗</a><div class="mute">'+esc(s[2])+'</div></div>'}).join('')}
+function viewCheck(){
+  var c=S.ck;if(c.day!==today()){c.day=today();c.done={}}
+  var n=BSITES.filter(function(x,i){return c.done[i]}).length;
+  return'<div class="sub">今天已检查 '+n+' / '+BSITES.length+'。勾选后会记下日期，第二天自动重置。</div>'
+   +BSITES.map(function(x,i){return'<div class="card row" style="flex-wrap:nowrap;align-items:flex-start"><input type="checkbox" style="width:22px;height:22px;flex:none;margin-top:2px" data-act="ck" data-id="'+i+'"'+(c.done[i]?' checked':'')+' aria-label="已检查 '+esc(x[0])+'"><div><a href="'+esc(x[1])+'" target="_blank" rel="noopener noreferrer" style="color:var(--acc);font-weight:700">'+esc(x[0])+' ↗</a><div class="mute">上次检查：'+esc(c.last[i]||'还没检查过')+'</div></div></div>'}).join('')
+   +'<h2>邮件提醒关键字</h2><div class="mute" style="margin-bottom:8px">在 JobStreet 和 Hiredly 的职位提醒里，地点选 Kuala Lumpur 或 Klang，把下面的关键字逐个添加。</div>'
+   +BKW.map(function(k){return'<div class="card row sp"><span>'+esc(k)+'</span><button class="ghost" data-act="bKw" data-id="'+esc(k)+'">复制</button></div>'}).join('')}
+function viewCareer(){
+  var subs=[['board','职位看板'],['sites','招聘网站'],['check','每日检查'],['apps','投递管家']];
+  return'<h1>求职</h1><div class="seg">'+subs.map(function(x){return'<button class="ghost chip'+(csub===x[0]?' on':'')+'" data-sub="'+x[0]+'">'+x[1]+'</button>'}).join('')+'</div>'
+   +({board:viewBoard,sites:viewSites,check:viewCheck,apps:viewApps})[csub]()}
 var VIEWS={today:viewToday,shop:viewShop,stock:viewStock,find:viewFind,career:viewCareer,task:viewTask};
 function render(){
   $('#nav').innerHTML=TABS.map(function(t){return'<button class="'+(t[0]===tab?'on':'')+'" data-tab="'+t[0]+'"><span>'+t[2]+'</span>'+t[1]+'</button>'}).join('');
@@ -250,13 +366,51 @@ var ACT={
   syncJobs:function(){S.jobFeed=v('j_feed')||S.jobFeed;syncJobs(false);return'skip'},
   delWatch:function(id){S.watch=S.watch.filter(function(w){return w.id!==id})},
   export:function(){$('#bk').value=JSON.stringify(S);$('#bk').select();return 'skip'},
-  import:function(){try{var d=JSON.parse(v('bk'));if(!d||typeof d!=='object')throw 0;S=d;['prices','stock','tasks','watch','apps'].forEach(function(k){S[k]=S[k]||[]})}catch(e){alert('内容格式不对');return 'skip'}}
+  import:function(){try{var d=JSON.parse(v('bk'));if(!d||typeof d!=='object')throw 0;S=d;ensure()}catch(e){alert('内容格式不对');return 'skip'}}
+};
+function sv(id,val){var e=document.getElementById(id);if(e)e.value=val==null?'':val}
+function flash(el,txt,old){if(!el)return;el.textContent=txt;setTimeout(function(){el.textContent=old},1600)}
+function clip(text,el,old){
+  try{navigator.clipboard.writeText(text).then(function(){flash(el,'已复制',old)},function(){flash(el,'复制失败',old)})}catch(x){flash(el,'复制失败',old)}}
+Object.assign(ACT,{
+  addApp:function(){var co=v('c_co');if(!co)return alert('请填公司或职位');
+    S.apps.push({id:uid(),co:co,role:v('c_role'),sal:parseInt(v('c_sal'),10)||0,wfh:v('c_wfh')===''?null:parseInt(v('c_wfh'),10),hr:v('c_hr'),int:v('c_int'),fu:v('c_fu'),st:STAGES[0],applied:today()})},
+  stage:function(id){S.apps.forEach(function(a){if(a.id===id)a.st=STAGES[(STAGES.indexOf(a.st)+1)%STAGES.length]})},
+  delApp:function(id){if(!confirm('删除这条投递记录？'))return'skip';S.apps=S.apps.filter(function(a){return a.id!==id})},
+  applyJob:function(id){var w=S.watch.filter(function(x){return x.id===id})[0];if(!w)return'skip';
+    S.apps.push({id:uid(),co:w.title,role:'',sal:w.hi||w.lo||0,wfh:null,hr:'',int:'',fu:'',st:STAGES[0],applied:today()});alert('已加入求职里的投递管家')},
+  bArea:function(id){BF.area=id},
+  bMin:function(){BF.min=!BF.min},
+  bEdit:function(id){BE=id;setTimeout(function(){var b=document.getElementById('b_box');if(b)b.scrollIntoView()},0)},
+  bCancel:function(){BE=null},
+  bDel:function(id){if(!confirm('删除这个职位？'))return'skip';S.bjobs=S.bjobs.filter(function(j){return j.id!==id})},
+  bSave:function(){var t=v('b_title');if(!t){var el=document.getElementById('b_title');if(el)el.focus();return'skip'}
+    var o={title:t,co:v('b_co'),area:v('b_area'),min:v('b_min'),max:v('b_max'),mode:v('b_mode'),stat:v('b_stat'),link:v('b_link'),note:v('b_note')};
+    if(BE){S.bjobs=S.bjobs.map(function(j){return j.id===BE?Object.assign({id:j.id},o):j})}else{o.id=uid();S.bjobs.push(o)}
+    BE=null},
+  bParse:function(){var ta=document.getElementById('b_paste'),m=document.getElementById('b_msg');if(!ta||!m)return'skip';
+    if(!ta.value.trim()){m.textContent='请先粘贴职位文字。';return'skip'}
+    var o=bParseJob(ta.value);sv('b_title',o.title);sv('b_co',o.co);sv('b_area',o.area);sv('b_min',o.min);sv('b_max',o.max);sv('b_mode',o.mode);sv('b_link',o.link);
+    var n=document.getElementById('b_note');if(n&&!n.value)n.value='导入日期 '+today();
+    m.textContent=(o.min?'已识别薪资。':'没找到薪资，请手动填。')+'请核对后点保存。';return'skip'},
+  bCopy:function(id,el){clip(S.bjobs.map(function(j){return j.stat+'｜'+j.title+'｜'+j.co+'｜'+j.area+'｜'+bPay(j).t+'｜'+(j.link||'')}).join('\n'),el,'复制清单');return'skip'},
+  bKw:function(id,el){clip(id,el,'复制');return'skip'}
+});
+var CHG={
+  toggle:function(id){ACT.toggle(id)},
+  bStat:function(id,el){S.bjobs.forEach(function(j){if(j.id===id)j.stat=el.value})},
+  bStatF:function(id,el){BF.stat=el.selectedIndex?el.value:'全部'},
+  ck:function(id,el){var c=S.ck;if(c.day!==today()){c.day=today();c.done={}}c.done[id]=el.checked;if(el.checked)c.last[id]=today()}
 };
 document.addEventListener('click',function(e){
   var b=e.target.closest('[data-tab]');if(b){tab=b.dataset.tab;render();window.scrollTo(0,0);return}
-  var a=e.target.closest('[data-act]');if(!a||a.type==='checkbox')return;
-  if(ACT[a.dataset.act](a.dataset.id)==='skip')return;save();render()});
-document.addEventListener('change',function(e){var a=e.target.closest('[data-act="toggle"]');if(a){ACT.toggle(a.dataset.id);save();render()}});
+  var sb=e.target.closest('[data-sub]');if(sb){csub=sb.dataset.sub;render();return}
+  var a=e.target.closest('[data-act]');if(!a||a.type==='checkbox'||a.tagName==='SELECT')return;
+  var fn=ACT[a.dataset.act];if(!fn)return;
+  if(fn(a.dataset.id,a)==='skip')return;save();render()});
+document.addEventListener('change',function(e){
+  var a=e.target.closest('[data-act]');if(!a)return;var fn=CHG[a.dataset.act];
+  if(fn){fn(a.dataset.id,a);save();render()}});
 if(!S.lastSync||Date.now()-S.lastSync>216e5)syncJobs(true);
 render();
 </script>
