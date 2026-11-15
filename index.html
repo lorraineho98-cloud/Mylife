@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MyLife</title><meta name="theme-color" content="#f6f0e6">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MyLife">
+<style>
+:root{--bg:#f6f0e6;--card:#fffaf1;--ink:#2b2418;--mute:#85765e;--line:#e6dcc8;--acc:#7d5f18;--accbg:#f1e4c3;--warn:#b45309;--warnbg:#fdecd3;--bad:#b42318;--badbg:#fde4e1;--good:#1a7f37;--goodbg:#dcf3e2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#17130d;--card:#221c13;--ink:#f2e8d5;--mute:#a79880;--line:#3a3022;--acc:#d9b862;--accbg:#3a2f16;--warn:#f0b35a;--warnbg:#3b2a12;--bad:#ff8f84;--badbg:#401d19;--good:#6fd28a;--goodbg:#173321}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#17130d;--card:#221c13;--ink:#f2e8d5;--mute:#a79880;--line:#3a3022;--acc:#d9b862;--accbg:#3a2f16;--warn:#f0b35a;--warnbg:#3b2a12;--bad:#ff8f84;--badbg:#401d19;--good:#6fd28a;--goodbg:#173321}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Segoe UI",sans-serif}
+main{max-width:560px;margin:0 auto;padding:16px 14px 96px}
+h1{font-size:22px;margin:4px 0 14px;font-family:Georgia,'Songti SC',serif}
+.hello{font:600 30px/1.15 Georgia,'Songti SC',serif;margin:2px 0 2px}.sub{color:var(--mute);font-size:13px;margin-bottom:14px}.kick{letter-spacing:.12em;font-size:12px;color:var(--acc);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}.grid button{background:var(--card);color:var(--ink);border:1px solid var(--line);padding:12px 4px;font-size:13px}.grid span{display:block;font-size:22px}
+h2{font-size:15px;margin:20px 0 8px;color:var(--mute);font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.sp{justify-content:space-between}
+.mute{color:var(--mute);font-size:13px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;margin:0}
+.half{flex:1 1 40%;min-width:0}
+button{font:inherit;border:0;border-radius:10px;padding:10px 14px;background:var(--acc);color:var(--bg);font-weight:600;cursor:pointer}
+button.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);font-weight:500;padding:6px 10px;font-size:14px}
+button.full{width:100%;margin-top:8px}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:99px;background:var(--accbg);color:var(--acc);font-weight:600}
+.tag.warn{background:var(--warnbg);color:var(--warn)}.tag.bad{background:var(--badbg);color:var(--bad)}.tag.good{background:var(--goodbg);color:var(--good)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.stat b{font-size:26px;display:block;line-height:1.1}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;background:none;color:var(--mute);border-radius:0;padding:10px 0 8px;font-size:12px;font-weight:500}
+nav button span{display:block;font-size:20px}
+nav button.on{color:var(--acc);font-weight:700}
+.done{text-decoration:line-through;color:var(--mute)}
+.empty{text-align:center;color:var(--mute);padding:20px 8px}
+</style>
+</head>
+<body>
+<main id="view"></main>
+<nav id="nav"></nav>
+<script>
+var K='mylife-os-v1',S=null;
+try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+S=S||{prices:[],stock:[],tasks:[],watch:[],apps:[]};
+['prices','stock','tasks','watch','apps'].forEach(function(k){S[k]=S[k]||[]});
+var MP='https://www.michaelpage.com.my/job-detail/';
+var SEED=[
+{t:'Senior Global Import/Export (3PL/4PL) - Michael Page',n:'KL 混合 | RM90-120k/年 | 偏管理，需资深经验 | 2026年7月发布，确认是否仍开放',lo:7500,hi:10000,u:MP+'senior-global-importexport-3pl4pl-vendor-management/ref/jn-072026-7055243'},
+{t:'Global Trade Operations (International Order Management) - Michael Page',n:'KL 混合 | RM55-90k/年 | 要2-5年经验，管出口订单和文件，最贴近出口客服 | 确认是否仍开放',lo:4583,hi:7500,u:MP+'global-trade-operations-international-order-management/ref/jn-072026-7064885'},
+{t:'Trade Documentation Executive - Michael Page',n:'KL 混合 | RM64.8-80k/年 | 月薪上限才过6k | 确认是否仍开放',lo:5400,hi:6667,u:MP+'trade-documentation-executive-regional-exposure-hybrid/ref/jn-072026-7067546'},
+{t:'Export Operations Executive (Global Shared Services) - Michael Page',n:'KL 混合 | 薪资未公开，投前问顾问 Marissa Nao 6012 306 0593 | 管出口订单、协调货代',u:MP+'export-operations-executive-global-shared-services/ref/jn-082026-7087237'},
+{t:'Export Customer Service - FM Global Logistics',n:'KL | 薪资未公开 | 来源 Hiredly',u:'https://my.hiredly.com/jobs/jobs-malaysia-fm-global-logistics-job-export-customer-service'},
+{t:'Customer Care and Logistics Manager - Dover',n:'KL 混合 | 薪资未公开，要5年以上经验和带团队 | 职位编号 59727',u:'https://careers.dovercorporation.com/job/Kuala-Lumpur-Customer-Care-and-Logistics-Manager/1173247001'}];
+if(!S.seedJobs){SEED.forEach(function(j){S.watch.push({id:uid(),kind:'job',title:j.t,note:j.n,history:[],lo:j.lo==null?null:j.lo,hi:j.hi==null?null:j.hi,url:j.u,added:today()})});S.seedJobs=1;try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+var $=function(s){return document.querySelector(s)};
+var v=function(id){var e=document.getElementById(id);return e?e.value.trim():''};
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function today(){var d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)}
+function days(a,b){return Math.round((new Date(a)-new Date(b))/864e5)}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+function rm(n){return 'RM'+Number(n).toFixed(2)}
+var tab='today';
+var TABS=[['today','首页','🏠'],['shop','购物','🛒'],['stock','补货','📦'],['find','查找','🔎'],['career','求职','💼'],['task','待办','✅']];
+
+/* ---- 购物 ---- */
+function unit(p){return p.ml?p.price/p.ml*100:p.price}
+function groups(){var g={};S.prices.forEach(function(p){(g[p.name]=g[p.name]||[]).push(p)});return g}
+function analyse(list){
+  var latest={};list.forEach(function(p){latest[p.store]=p});
+  var cur=Object.keys(latest).map(function(k){return latest[k]});
+  var best=cur.reduce(function(a,b){return unit(b)<unit(a)?b:a});
+  var last=list[list.length-1],before=list.slice(0,-1);
+  var isLow=before.length>0&&unit(last)<Math.min.apply(null,before.map(unit));
+  return{cur:cur,best:best,last:last,isLow:isLow}
+}
+function drops(){var out=[];var g=groups();Object.keys(g).forEach(function(n){var a=analyse(g[n]);if(a.isLow)out.push(n)});return out}
+function viewShop(){
+  var g=groups(),names=Object.keys(g);
+  var h='<h1>购物比价</h1><div class="card"><input id="s_name" list="names" placeholder="商品名，如 洗发水 700ml">'
+   +'<datalist id="names">'+names.map(function(n){return'<option value="'+esc(n)+'">'}).join('')+'</datalist>'
+   +'<div class="row" style="margin-top:8px"><input class="half" id="s_store" placeholder="商店"><input class="half" id="s_price" type="number" step="0.01" inputmode="decimal" placeholder="价格 RM"><input class="half" id="s_ml" type="number" inputmode="decimal" placeholder="容量 ml（可空）"></div>'
+   +'<button class="full" data-act="addPrice">记录价格</button></div>';
+  if(!names.length)h+='<div class="empty">还没有记录。输入商品、商店和价格，就会自动比较每 100ml 成本。</div>';
+  names.forEach(function(n){
+    var a=analyse(g[n]);
+    h+='<div class="card"><div class="row sp"><b>'+esc(n)+'</b>'+(a.isLow?'<span class="tag good">历史新低</span>':'')+'</div>';
+    a.cur.sort(function(x,y){return unit(x)-unit(y)}).forEach(function(p){
+      h+='<div class="row sp" style="margin-top:6px"><span>'+esc(p.store||'未填商店')+(p===a.best&&a.cur.length>1?' <span class="tag">最划算</span>':'')+'</span><span>'+rm(p.price)+(p.ml?' <span class="mute">· 每100ml '+rm(unit(p))+'</span>':'')+'</span></div>'});
+    h+='<div class="row sp" style="margin-top:8px"><span class="mute">'+g[n].length+' 条记录</span><button class="ghost" data-act="delName" data-id="'+esc(n)+'">删除</button></div></div>'});
+  return h}
+
+/* ---- 补货 ---- */
+function left(s){return s.cycle-days(today(),s.last)}
+function viewStock(){
+  var h='<h1>日用品补货</h1><div class="card"><input id="k_name" placeholder="日用品，如 洗衣液">'
+   +'<div class="row" style="margin-top:8px"><input class="half" id="k_cycle" type="number" inputmode="numeric" placeholder="大约几天用完"><input class="half" id="k_last" type="date" value="'+today()+'"></div>'
+   +'<button class="full" data-act="addStock">加入清单</button></div>';
+  if(!S.stock.length)h+='<div class="empty">加入常用品和使用周期，快用完时会在今日页提醒你。</div>';
+  S.stock.slice().sort(function(a,b){return left(a)-left(b)}).forEach(function(s){
+    var d=left(s),cls=d<0?'bad':d<=7?'warn':'good',t=d<0?'已超期 '+(-d)+' 天':d===0?'今天用完':'还剩 '+d+' 天';
+    h+='<div class="card"><div class="row sp"><b>'+esc(s.name)+'</b><span class="tag '+cls+'">'+t+'</span></div>'
+     +'<div class="row sp" style="margin-top:8px"><span class="mute">每 '+s.cycle+' 天 · 上次 '+esc(s.last)+'</span><span class="row"><button class="ghost" data-act="restock" data-id="'+s.id+'">已补货</button><button class="ghost" data-act="delStock" data-id="'+s.id+'">删除</button></span></div></div>'});
+  return h}
+
+/* ---- 待办 ---- */
+function viewTask(){
+  var h='<h1>待办</h1><div class="card"><input id="t_text" placeholder="要做什么？"><div class="row" style="margin-top:8px"><input class="half" id="t_due" type="date" value="'+today()+'"></div><button class="full" data-act="addTask">添加待办</button></div>';
+  var open=S.tasks.filter(function(t){return!t.done}).sort(function(a,b){return(a.due||'9')<(b.due||'9')?-1:1});
+  var done=S.tasks.filter(function(t){return t.done});
+  if(!S.tasks.length)h+='<div class="empty">没有待办。加一条试试。</div>';
+  open.concat(done).forEach(function(t){
+    var late=!t.done&&t.due&&t.due<today();
+    h+='<div class="card row sp"><label class="row" style="flex:1;margin:0"><input type="checkbox" style="width:22px;height:22px" '+(t.done?'checked':'')+' data-act="toggle" data-id="'+t.id+'"><span class="'+(t.done?'done':'')+'">'+esc(t.text)+'</span></label>'
+     +'<span class="row">'+(t.due?'<span class="tag '+(late?'bad':'')+'">'+esc(t.due.slice(5))+'</span>':'')+'<button class="ghost" data-act="delTask" data-id="'+t.id+'">删除</button></span></div>'});
+  return h}
+
+/* ---- 查找：机票 酒店 房产 职位 ---- */
+var KINDS={flight:'✈️ 机票',hotel:'🏨 酒店',rent:'🏠 租房',buy:'🏡 买房',job:'💼 职位'};
+function minSal(){return S.minSal||6000}
+function sc(w){return w.hi!=null&&w.hi>=minSal()?2:(w.hi==null&&w.lo==null?1:0)}
+function salTag(w){
+  if(w.hi==null&&w.lo==null)return'<span class="tag warn">薪资未公开</span>';
+  var m=minSal(),r='RM'+(w.lo==null?'?':w.lo)+(w.hi!=null&&w.hi!==w.lo?'–'+w.hi:'')+'/月 ';
+  if(w.lo!=null&&w.lo>=m)return'<span class="tag good">'+r+'达标</span>';
+  if(w.hi!=null&&w.hi>=m)return'<span class="tag warn">'+r+'上限达标</span>';
+  return'<span class="tag bad">'+r+'低于'+m+'</span>'}
+function jobTools(){
+  var q=S.jobq||'export customer service',e=encodeURIComponent(q),g=function(d){return'https://www.google.com/search?q='+encodeURIComponent('site:'+d+' '+q+' Kuala Lumpur')};
+  var L=[['JobStreet','https://my.jobstreet.com/'+q.trim().replace(/\s+/g,'-')+'-jobs/in-Kuala-Lumpur'],['LinkedIn（混合）','https://www.linkedin.com/jobs/search/?keywords='+e+'&location=Kuala%20Lumpur&f_WT=3'],['Indeed','https://malaysia.indeed.com/jobs?q='+e+'&l=Kuala+Lumpur'],['Hiredly',g('my.hiredly.com')],['Maukerja',g('maukerja.my')],['Michael Page',g('michaelpage.com.my')],['Robert Walters',g('robertwalters.com.my')]];
+  return'<h2>💼 求职工具</h2><div class="card"><input id="j_q" value="'+esc(q)+'" placeholder="职位关键词">'
+   +'<div class="row" style="margin-top:8px"><input class="half" id="j_min" type="number" inputmode="numeric" value="'+minSal()+'" placeholder="最低月薪 RM"><button class="ghost" data-act="setJob">保存条件</button></div>'
+   +'<input id="j_feed" style="margin-top:8px" value="'+esc(S.jobFeed||'')+'" placeholder="数据源网址（从 GitHub Pages 打开时留空即可）">'
+   +'<div class="row" style="margin-top:8px"><button class="ghost" data-act="setFeed">保存网址</button><button class="ghost" data-act="syncJobs">立即同步</button><span class="mute">'+(S.lastSync?'上次 '+new Date(S.lastSync).toLocaleString('zh-CN'):'尚未同步')+'；自动同步职位和价格，每 6 小时一次</span></div>'
+   +'<div class="mute" style="margin-top:8px">一键搜索（地点 KL）。Hiredly、Maukerja、Michael Page、Robert Walters 通过站内搜索打开。</div>'
+   +'<div class="row" style="margin-top:8px">'+L.map(function(x){return'<a class="tag" style="text-decoration:none" target="_blank" rel="noopener" href="'+esc(x[1])+'">'+x[0]+' ↗</a>'}).join('')+'</div></div>'
+   +'<div class="card"><div class="mute">批量导入职位（JSON 数组，字段：title, company, location, salary_min, salary_max, salary_period 填 year 则按年薪换算, url, posted, source）。低于最低月薪、发布超过45天、重复的会自动跳过。</div>'
+   +'<textarea id="j_json" rows="3" style="margin-top:8px" placeholder=\'[{"title":"Export CS Executive","company":"ABC","salary_min":6000,"url":"https://..."}]\'></textarea>'
+   +'<button class="full" data-act="importJobs">导入职位</button></div>'}
+function importList(a){
+  var add=0,low=0,old=0,dup=0;
+  a.forEach(function(j){if(!j||!j.title)return;
+    var f=j.salary_period==='year'?1/12:1,lo=j.salary_min!=null?Math.round(j.salary_min*f):null,hi=j.salary_max!=null?Math.round(j.salary_max*f):lo,top=hi!=null?hi:lo;
+    if(top!=null&&top<minSal()){low++;return}
+    if(j.posted&&days(today(),j.posted)>45){old++;return}
+    var t=j.company?j.title+' - '+j.company:j.title;
+    if(S.watch.some(function(w){return w.kind==='job'&&((j.url&&w.url===j.url)||w.title.toLowerCase()===t.toLowerCase())})){dup++;return}
+    S.watch.push({id:uid(),kind:'job',title:t,note:[j.location,j.hybrid?'混合/WFH':'',j.source,j.posted?'发布 '+j.posted:''].filter(Boolean).join(' | '),history:[],lo:lo,hi:hi,url:j.url||'',added:today()});add++});
+  return{add:add,msg:'新增 '+add+'，低薪跳过 '+low+'，过期跳过 '+old+'，重复跳过 '+dup}}
+function feedBase(){var u=S.jobFeed;return u?u.replace(/jobs_latest\.json.*$/,''):'data/'}
+function syncJobs(silent){
+  var b=feedBase(),get=function(f){return fetch(b+f+'?t='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(a){if(!Array.isArray(a))throw 0;return a}).catch(function(){return null})};
+  Promise.all([get('jobs_latest.json'),get('prices_latest.json')]).then(function(x){
+    if(!x[0]&&!x[1]){if(!silent)alert('同步失败：要从 GitHub Pages 打开本页，或在下方填写职位源网址；仓库需为 Public，且已运行过 jobs');return}
+    var r=x[0]?importList(x[0]):{add:0,msg:'职位源暂无数据'},np=0;
+    (x[1]||[]).forEach(function(p){if(!p||!p.name||!(p.price>0))return;
+      if(S.prices.some(function(q){return q.name===p.name&&q.store===p.store&&q.date===p.date}))return;
+      S.prices.push({id:uid(),name:p.name,store:p.store||'',price:p.price,ml:p.ml||0,date:p.date||today()});np++});
+    S.lastSync=Date.now();save();
+    if(!silent)alert(r.msg+'；新增价格记录 '+np);if(!silent||r.add>0||np>0)render()})}
+function viewFind(){
+  var h='<h1>查找清单</h1><div class="card"><select id="w_kind">'+Object.keys(KINDS).map(function(k){return'<option value="'+k+'">'+KINDS[k]+'</option>'}).join('')+'</select>'
+   +'<input id="w_title" style="margin-top:8px" placeholder="如 吉隆坡 到 东京 12月20日 / 巴生 租房 / 物流主管">'
+   +'<input id="w_note" style="margin-top:8px" placeholder="备注：预算、链接、要求（可空）">'
+   +'<button class="full" data-act="addWatch">加入清单</button></div>'+jobTools();
+  if(!S.watch.length)h+='<div class="empty">把想追踪的路线、房子、职位放这里。把看到的价格记下来，我会帮你标出最低价。</div>';
+  Object.keys(KINDS).forEach(function(k){
+    var items=S.watch.filter(function(w){return w.kind===k});if(!items.length)return;
+    if(k==='job')items.sort(function(a,b){return sc(b)-sc(a)||(b.hi||0)-(a.hi||0)});
+    h+='<h2>'+KINDS[k]+'</h2>';
+    items.forEach(function(w){
+      var hs=w.history||[],last=hs.length?hs[hs.length-1]:null,min=hs.length?Math.min.apply(null,hs.map(function(x){return x.price})):null;
+      h+='<div class="card"><div class="row sp"><b>'+esc(w.title)+'</b>'+(last&&hs.length>1&&last.price<=min?'<span class="tag good">最低价</span>':'')+(k==='job'?salTag(w):'')+'</div>'
+       +(w.note?'<div class="mute">'+esc(w.note)+'</div>':'')
+       +(last?'<div style="margin-top:6px">最近 '+rm(last.price)+' <span class="mute">· 最低 '+rm(min)+' · '+hs.length+' 条</span></div>':'')
+       +(w.url?'<div style="margin-top:6px"><a href="'+esc(w.url)+'" target="_blank" rel="noopener" style="color:var(--acc)">打开职位页 ↗</a></div>':'')+'<div class="row" style="margin-top:8px"><input class="half" id="wp_'+w.id+'" type="number" step="0.01" inputmode="decimal" placeholder="'+(k==='job'?'薪资 RM':'价格 RM')+'"><button class="ghost" data-act="watchPrice" data-id="'+w.id+'">记录</button>'+(k==='job'?'<button class="ghost" data-act="applyJob" data-id="'+w.id+'">记为已投递</button>':'')+'<button class="ghost" data-act="delWatch" data-id="'+w.id+'">删除</button></div></div>'})});
+  return h}
+
+/* ---- 今日 ---- */
+function viewToday(){
+  var t=today(),open=S.tasks.filter(function(x){return!x.done}),due=open.filter(function(x){return x.due&&x.due<=t});
+  var soon=S.stock.filter(function(s){return left(s)<=7}),dr=drops();
+  var cr=careerDue(),hr=new Date().getHours(),hi=hr<12?'Good Morning.':hr<18?'Good Afternoon.':'Good Evening.';
+  var h='<div class="kick">'+new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}).toUpperCase()+'</div><div class="hello">'+hi+'</div><div class="sub">Your personal life overview.</div><div class="stats">'
+   +'<div class="stat"><b>'+due.length+'</b><span class="mute">今天或逾期待办</span></div>'
+   +'<div class="stat"><b>'+soon.length+'</b><span class="mute">快用完的日用品</span></div>'
+   +'<div class="stat"><b>'+dr.length+'</b><span class="mute">创新低的商品</span></div>'
+   +'<div class="stat"><b>'+S.watch.length+'</b><span class="mute">查找清单</span></div></div>';
+  h+='<div class="grid">'+[['career','💼','求职'],['shop','🛒','购物'],['stock','📦','补货'],['find','🔎','查找'],['task','✅','待办']].map(function(x){return'<button data-tab="'+x[0]+'"><span>'+x[1]+'</span>'+x[2]+'</button>'}).join('')+'</div>';
+  if(cr.length){h+='<h2>求职提醒</h2>';cr.forEach(function(x){h+='<div class="card row sp"><b>'+esc(x[0].co)+'</b><span class="tag '+x[2]+'">'+x[1]+'</span></div>'})}
+  if(due.length){h+='<h2>待办</h2>';due.forEach(function(x){h+='<div class="card">'+esc(x.text)+(x.due<t?' <span class="tag bad">逾期</span>':'')+'</div>'})}
+  if(soon.length){h+='<h2>该补货了</h2>';soon.forEach(function(s){h+='<div class="card row sp"><b>'+esc(s.name)+'</b><span class="tag warn">'+(left(s)<0?'已超期':'还剩 '+left(s)+' 天')+'</span></div>'})}
+  if(dr.length){h+='<h2>价格新低</h2>';dr.forEach(function(n){var a=analyse(groups()[n]);h+='<div class="card row sp"><b>'+esc(n)+'</b><span>'+esc(a.last.store)+' '+rm(a.last.price)+'</span></div>'})}
+  if(!due.length&&!soon.length&&!dr.length&&!cr.length)h+='<div class="empty">今天没有需要处理的事。从下方“购物”或“补货”开始记录。</div>';
+  h+='<h2>备份</h2><div class="card"><div class="mute">资料只存在这台手机的浏览器里。换手机或清除浏览器数据前，请先导出。</div>'
+   +'<div class="row" style="margin-top:8px"><button class="ghost" data-act="export">导出</button><button class="ghost" data-act="import">导入</button></div>'
+   +'<textarea id="bk" rows="3" style="margin-top:8px" placeholder="导出的内容会显示在这里；导入时把内容粘贴到这里"></textarea></div>';
+  return h}
+
+/* ---- 求职管家 ---- */
+var STAGES=['已投递','面试中','Offer','已拒绝'];
+function careerDue(){var t=today(),o=[];S.apps.forEach(function(a){if(a.st==='已拒绝')return;
+  if(a.int&&a.int>=t&&days(a.int,t)<=3)o.push([a,'面试 '+a.int.slice(5),'warn']);
+  if(a.fu&&a.fu<=t&&a.st!=='Offer')o.push([a,'该跟进','bad'])});return o}
+function viewCareer(){
+  var t=today(),wk=S.apps.filter(function(a){return a.applied&&days(t,a.applied)<=7}),cnt=function(s){return S.apps.filter(function(a){return a.st===s}).length};
+  var h='<h1>求职管家</h1><div class="stats"><div class="stat"><b>'+wk.length+'</b><span class="mute">本周投递</span></div><div class="stat"><b>'+cnt('面试中')+'</b><span class="mute">面试中</span></div><div class="stat"><b>'+cnt('已投递')+'</b><span class="mute">等回复</span></div><div class="stat"><b>'+cnt('Offer')+'</b><span class="mute">Offer</span></div></div>'
+   +'<div class="card"><input id="c_co" placeholder="公司 / 职位"><input id="c_role" style="margin-top:8px" placeholder="职称（可空）">'
+   +'<div class="row" style="margin-top:8px"><input class="half" id="c_sal" type="number" inputmode="numeric" placeholder="月薪 RM"><input class="half" id="c_wfh" type="number" inputmode="numeric" placeholder="WFH 天/周"></div>'
+   +'<input id="c_hr" style="margin-top:8px" placeholder="HR 联系方式（可空）">'
+   +'<div class="row" style="margin-top:8px"><label class="half mute">面试日期<input id="c_int" type="date"></label><label class="half mute">跟进日期<input id="c_fu" type="date"></label></div>'
+   +'<button class="full" data-act="addApp">记录投递</button></div>';
+  var offers=S.apps.filter(function(a){return a.st==='Offer'});
+  if(offers.length>1){h+='<h2>Offer 对比</h2>';offers.sort(function(a,b){return(b.sal||0)-(a.sal||0)}).forEach(function(a){h+='<div class="card row sp"><b>'+esc(a.co)+'</b><span>'+(a.sal?'RM'+a.sal:'未填')+' · WFH '+(a.wfh==null?'?':a.wfh)+' 天</span></div>'})}
+  if(!S.apps.length)h+='<div class="empty">在查找页点"记为已投递"，或在这里手动记录。会提醒你面试和跟进。</div>';
+  S.apps.slice().sort(function(a,b){return STAGES.indexOf(a.st)-STAGES.indexOf(b.st)}).forEach(function(a){
+    h+='<div class="card"><div class="row sp"><b>'+esc(a.co)+(a.role?' · '+esc(a.role):'')+'</b><span class="tag '+(a.st==='Offer'?'good':a.st==='已拒绝'?'bad':'')+'">'+a.st+'</span></div>'
+     +'<div class="mute">'+[a.sal?'RM'+a.sal:'',a.wfh!=null?'WFH '+a.wfh+' 天':'',a.hr,a.applied?'投递 '+a.applied.slice(5):''].filter(Boolean).map(esc).join(' · ')+'</div>'
+     +(a.int||a.fu?'<div style="margin-top:6px">'+(a.int?'<span class="tag warn">面试 '+esc(a.int.slice(5))+'</span> ':'')+(a.fu?'<span class="tag">跟进 '+esc(a.fu.slice(5))+'</span>':'')+'</div>':'')
+     +'<div class="row" style="margin-top:8px"><button class="ghost" data-act="stage" data-id="'+a.id+'">推进状态</button><button class="ghost" data-act="delApp" data-id="'+a.id+'">删除</button></div></div>'});
+  return h}
+var VIEWS={today:viewToday,shop:viewShop,stock:viewStock,find:viewFind,career:viewCareer,task:viewTask};
+function render(){
+  $('#nav').innerHTML=TABS.map(function(t){return'<button class="'+(t[0]===tab?'on':'')+'" data-tab="'+t[0]+'"><span>'+t[2]+'</span>'+t[1]+'</button>'}).join('');
+  $('#view').innerHTML=VIEWS[tab]()}
+
+var ACT={
+  addPrice:function(){var n=v('s_name'),p=parseFloat(v('s_price'));if(!n||!(p>0))return alert('请填商品名和价格');
+    S.prices.push({id:uid(),name:n,store:v('s_store'),price:p,ml:parseFloat(v('s_ml'))||0,date:today()})},
+  delName:function(id){if(confirm('删除“'+id+'”的所有记录？'))S.prices=S.prices.filter(function(p){return p.name!==id})},
+  addStock:function(){var n=v('k_name'),c=parseInt(v('k_cycle'),10);if(!n||!(c>0))return alert('请填名称和天数');
+    S.stock.push({id:uid(),name:n,cycle:c,last:v('k_last')||today()})},
+  restock:function(id){S.stock.forEach(function(s){if(s.id===id)s.last=today()})},
+  delStock:function(id){S.stock=S.stock.filter(function(s){return s.id!==id})},
+  addTask:function(){var t=v('t_text');if(!t)return;S.tasks.push({id:uid(),text:t,due:v('t_due'),done:false})},
+  toggle:function(id){S.tasks.forEach(function(t){if(t.id===id)t.done=!t.done})},
+  delTask:function(id){S.tasks=S.tasks.filter(function(t){return t.id!==id})},
+  addWatch:function(){var t=v('w_title');if(!t)return alert('请填内容');S.watch.push({id:uid(),kind:v('w_kind'),title:t,note:v('w_note'),history:[]})},
+  watchPrice:function(id){var p=parseFloat(v('wp_'+id));if(!(p>0))return;S.watch.forEach(function(w){if(w.id===id)w.history.push({price:p,date:today()})})},
+  setJob:function(){var q=v('j_q');if(q)S.jobq=q;var m=parseInt(v('j_min'),10);if(m>0)S.minSal=m},
+  importJobs:function(){var a;try{a=JSON.parse(v('j_json'));if(!Array.isArray(a))throw 0}catch(e){alert('内容格式不对，需要 JSON 数组');return'skip'}
+    alert(importList(a).msg)},
+  setFeed:function(){S.jobFeed=v('j_feed')},
+  syncJobs:function(){S.jobFeed=v('j_feed')||S.jobFeed;syncJobs(false);return'skip'},
+  delWatch:function(id){S.watch=S.watch.filter(function(w){return w.id!==id})},
+  export:function(){$('#bk').value=JSON.stringify(S);$('#bk').select();return 'skip'},
+  import:function(){try{var d=JSON.parse(v('bk'));if(!d||typeof d!=='object')throw 0;S=d;['prices','stock','tasks','watch','apps'].forEach(function(k){S[k]=S[k]||[]})}catch(e){alert('内容格式不对');return 'skip'}}
+};
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-tab]');if(b){tab=b.dataset.tab;render();window.scrollTo(0,0);return}
+  var a=e.target.closest('[data-act]');if(!a||a.type==='checkbox')return;
+  if(ACT[a.dataset.act](a.dataset.id)==='skip')return;save();render()});
+document.addEventListener('change',function(e){var a=e.target.closest('[data-act="toggle"]');if(a){ACT.toggle(a.dataset.id);save();render()}});
+if(!S.lastSync||Date.now()-S.lastSync>216e5)syncJobs(true);
+render();
+</script>
+</body>
+</html>
