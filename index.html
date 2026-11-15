@@ -178,9 +178,9 @@ function importFlights(a){var n=0;a.forEach(function(f){if(!f||!f.name||!(f.pric
 function feedBase(){var u=S.jobFeed;return u?u.replace(/jobs_latest\.json.*$/,''):'data/'}
 function syncJobs(silent){
   var b=feedBase(),get=function(f){return fetch(b+f+'?t='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(a){if(!Array.isArray(a))throw 0;return a}).catch(function(){return null})};
-  Promise.all([get('jobs_latest.json'),get('prices_latest.json'),get('flights_latest.json')]).then(function(x){
-    if(!x[0]&&!x[1]&&!x[2]){if(!silent)alert('同步失败：要从 GitHub Pages 打开本页，或在下方填写职位源网址；仓库需为 Public，且已运行过 jobs');return}
-    var r=x[0]?importList(x[0]):{add:0,msg:'职位源暂无数据'},np=0;
+  Promise.all([get('jobs_latest.json'),get('prices_latest.json'),get('flights_latest.json'),get('jobs_extra.json')]).then(function(x){
+    if(!x[0]&&!x[1]&&!x[2]&&!x[3]){if(!silent)alert('同步失败：要从 GitHub Pages 打开本页，或在下方填写职位源网址；仓库需为 Public，且已运行过 jobs');return}
+    var jl=(x[0]||[]).concat(x[3]||[]),r=jl.length?importList(jl):{add:0,msg:'职位源暂无数据'},np=0;
     (x[1]||[]).forEach(function(p){if(!p||!p.name||!(p.price>0))return;
       if(S.prices.some(function(q){return q.name===p.name&&q.store===p.store&&q.date===p.date}))return;
       S.prices.push({id:uid(),name:p.name,store:p.store||'',price:p.price,ml:p.ml||0,date:p.date||today()});np++});
