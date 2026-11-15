@@ -1,0 +1,61 @@
+{
+  "currency": "myr",
+  "live_check": {
+    "enabled": true,
+    "max_per_day": 2,
+    "min_history": 3,
+    "market": "MY"
+  },
+  "routes": [
+    {
+      "name": "吉隆坡 到 槟城",
+      "origin": "KUL",
+      "destination": "PEN",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 兰卡威",
+      "origin": "KUL",
+      "destination": "LGK",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 亚庇",
+      "origin": "KUL",
+      "destination": "BKI",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 古晋",
+      "origin": "KUL",
+      "destination": "KCH",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 曼谷",
+      "origin": "KUL",
+      "destination": "BKK",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 东京",
+      "origin": "KUL",
+      "destination": "TYO",
+      "depart": "2026-12",
+      "live_destination": "NRT"
+    },
+    {
+      "name": "吉隆坡 到 首尔",
+      "origin": "KUL",
+      "destination": "SEL",
+      "depart": "2026-12",
+      "live_destination": "ICN"
+    },
+    {
+      "name": "吉隆坡 到 香港",
+      "origin": "KUL",
+      "destination": "HKG",
+      "depart": "2026-12"
+    }
+  ]
+}
