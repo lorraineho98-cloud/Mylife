@@ -56,6 +56,180 @@
       "origin": "KUL",
       "destination": "HKG",
       "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 上海",
+      "origin": "KUL",
+      "destination": "SHA",
+      "depart": "2026-12",
+      "live_destination": "PVG"
+    },
+    {
+      "name": "吉隆坡 到 北京",
+      "origin": "KUL",
+      "destination": "BJS",
+      "depart": "2026-12",
+      "live_destination": "PEK"
+    },
+    {
+      "name": "吉隆坡 到 广州",
+      "origin": "KUL",
+      "destination": "CAN",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 深圳",
+      "origin": "KUL",
+      "destination": "SZX",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 成都",
+      "origin": "KUL",
+      "destination": "CTU",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 厦门",
+      "origin": "KUL",
+      "destination": "XMN",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 澳门",
+      "origin": "KUL",
+      "destination": "MFM",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 台北",
+      "origin": "KUL",
+      "destination": "TPE",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 新加坡",
+      "origin": "KUL",
+      "destination": "SIN",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 雅加达",
+      "origin": "KUL",
+      "destination": "JKT",
+      "depart": "2026-12",
+      "live_destination": "CGK"
+    },
+    {
+      "name": "吉隆坡 到 巴厘岛",
+      "origin": "KUL",
+      "destination": "DPS",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 河内",
+      "origin": "KUL",
+      "destination": "HAN",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 胡志明市",
+      "origin": "KUL",
+      "destination": "SGN",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 普吉岛",
+      "origin": "KUL",
+      "destination": "HKT",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 马尼拉",
+      "origin": "KUL",
+      "destination": "MNL",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 大阪",
+      "origin": "KUL",
+      "destination": "OSA",
+      "depart": "2026-12",
+      "live_destination": "KIX"
+    },
+    {
+      "name": "吉隆坡 到 悉尼",
+      "origin": "KUL",
+      "destination": "SYD",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 墨尔本",
+      "origin": "KUL",
+      "destination": "MEL",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 伦敦",
+      "origin": "KUL",
+      "destination": "LON",
+      "depart": "2026-12",
+      "live_destination": "LHR"
+    },
+    {
+      "name": "吉隆坡 到 巴黎",
+      "origin": "KUL",
+      "destination": "PAR",
+      "depart": "2026-12",
+      "live_destination": "CDG"
+    },
+    {
+      "name": "吉隆坡 到 迪拜",
+      "origin": "KUL",
+      "destination": "DXB",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 伊斯坦布尔",
+      "origin": "KUL",
+      "destination": "IST",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 德里",
+      "origin": "KUL",
+      "destination": "DEL",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 科伦坡",
+      "origin": "KUL",
+      "destination": "CMB",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 马尔代夫",
+      "origin": "KUL",
+      "destination": "MLE",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 金边",
+      "origin": "KUL",
+      "destination": "PNH",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 吉达",
+      "origin": "KUL",
+      "destination": "JED",
+      "depart": "2026-12"
+    },
+    {
+      "name": "吉隆坡 到 奥克兰",
+      "origin": "KUL",
+      "destination": "AKL",
+      "depart": "2026-12"
     }
   ]
 }
