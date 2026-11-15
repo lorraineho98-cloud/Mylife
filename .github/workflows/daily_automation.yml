@@ -6,11 +6,6 @@ on:
         description: "jobs-verify | jobs | shopping | briefing | healthcheck | test-notify"
         default: test-notify
   schedule:
-    - cron: "0 22 * * *"
-    - cron: "45 22 * * *"
-    - cron: "15 23 * * *"
-    - cron: "0 4 * * *"
-    - cron: "0 15 * * *"
     - cron: "0 0 * * *"
     - cron: "0 10 * * *"
 
