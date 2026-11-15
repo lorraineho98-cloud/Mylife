@@ -1,6 +1,6 @@
 import os
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///mylife.db")
+DATABASE_URL = os.getenv("DATABASE_URL") or "sqlite:///mylife.db"
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
