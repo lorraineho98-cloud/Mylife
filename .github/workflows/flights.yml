@@ -2,15 +2,11 @@ name: flight-prices
 
 on:
   schedule:
-    - cron: "0 * * * *"   # 每小时整点（UTC），即马来西亚时间每小时一次
+    - cron: "0 1 * * *"   # 每天 09:00（马来西亚时间）
   workflow_dispatch:
 
 permissions:
   contents: write
-
-concurrency:
-  group: flight-prices
-  cancel-in-progress: false
 
 jobs:
   flights:
