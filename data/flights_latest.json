@@ -1,0 +1,146 @@
+[
+ {
+  "name": "吉隆坡 到 槟城",
+  "origin": "KUL",
+  "destination": "PEN",
+  "depart": "2026-12",
+  "currency": "myr",
+  "price": 108,
+  "airline": "FY",
+  "departure_at": "2026-12-03T13:50:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0312PEN1?t=FY17963058001796309400000060KULPEN_957469fbbd57d764d6077cf7941436e4_2212&search_date=10112026&expected_price_uuid=01a1c591-6665-8031-6196-b28c729d3de6&static_fare_key=TY%7CP0%7CH0%7CL1_1_10%7CCH0%7CR0%7CTBC1&itinerary_key=ru-zBEk53nGzDxILfoq6wg&expected_price_source=share&expected_price_currency=myr&expected_price=108",
+  "date": "2026-11-15",
+  "history": [
+   {
+    "date": "2026-11-15",
+    "price": 108
+   }
+  ]
+ },
+ {
+  "name": "吉隆坡 到 兰卡威",
+  "origin": "KUL",
+  "destination": "LGK",
+  "depart": "2026-12",
+  "currency": "myr",
+  "price": 119,
+  "airline": "AK",
+  "departure_at": "2026-12-02T20:05:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0212LGK1?t=AK17962419001796245800000065KULLGK_9465607d2834209aae8e2cb2decc29c5_2408&search_date=15112026&expected_price_uuid=01a1dde9-0de1-8030-2e52-65af92ed2e7b&static_fare_key=TY%7CP1_JW%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=7Qhe1vkImxyHpVLm8lOvYw&expected_price_source=share&expected_price_currency=myr&expected_price=119",
+  "date": "2026-11-15",
+  "history": [
+   {
+    "date": "2026-11-15",
+    "price": 119
+   }
+  ]
+ },
+ {
+  "name": "吉隆坡 到 亚庇",
+  "origin": "KUL",
+  "destination": "BKI",
+  "depart": "2026-12",
+  "currency": "myr",
+  "price": 299,
+  "airline": "AK",
+  "departure_at": "2026-12-02T16:00:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0212BKI1?t=AK17962272001796236800000160KULBKI_1d63626da355a711ceec18793940c7c1_6018&search_date=13112026&expected_price_uuid=01a1d444-8800-8040-acd3-717fc184ee61&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=u5ZpV_1xpFhsJ5FvvoR7TQ&expected_price_source=share&expected_price_currency=myr&expected_price=299",
+  "date": "2026-11-15",
+  "history": [
+   {
+    "date": "2026-11-15",
+    "price": 299
+   }
+  ]
+ },
+ {
+  "name": "吉隆坡 到 古晋",
+  "origin": "KUL",
+  "destination": "KCH",
+  "depart": "2026-12",
+  "currency": "myr",
+  "price": 306,
+  "airline": "AK",
+  "departure_at": "2026-12-04T18:05:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0412KCH1?t=AK17964075001796414400000115KULKCH_c9fbf2349b0e6d26839d678979965efe_6203&search_date=13112026&expected_price_uuid=01a1d600-26bb-8030-a096-b61f3675e997&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=FlExuu6Hull39gHUCzBzzg&expected_price_source=share&expected_price_currency=myr&expected_price=306",
+  "date": "2026-11-15",
+  "history": [
+   {
+    "date": "2026-11-15",
+    "price": 306
+   }
+  ]
+ },
+ {
+  "name": "吉隆坡 到 曼谷",
+  "origin": "KUL",
+  "destination": "BKK",
+  "depart": "2026-12",
+  "currency": "myr",
+  "price": 325,
+  "airline": "AK",
+  "departure_at": "2026-12-01T19:30:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0112BKK1?t=AK17961534001796158200000140KULDMK_ad4672d274b049750a13e1286a424120_6594&search_date=15112026&expected_price_uuid=01a1dd13-c425-8030-eafd-fa62b9b68147&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=DUyqBjyJ0_tgllj-rSaRDw&expected_price_source=share&expected_price_currency=myr&expected_price=325",
+  "date": "2026-11-15",
+  "history": [
+   {
+    "date": "2026-11-15",
+    "price": 325
+   }
+  ]
+ },
+ {
+  "name": "吉隆坡 到 东京",
+  "origin": "KUL",
+  "destination": "TYO",
+  "depart": "2026-12",
+  "currency": "myr",
+  "price": 748,
+  "airline": "VJ",
+  "departure_at": "2026-12-01T13:35:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0112TYO1?t=VJ17961321001796173200000625KULSGNHND_e2bd122c050ddf1a2ba1203ba72e387c_15158&search_date=15112026&expected_price_uuid=01a1dd9c-fcc2-8031-2e2b-761dd268112b&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=K4PvXQISL6ygdbJE86_PVg&expected_price_source=share&expected_price_currency=myr&expected_price=748",
+  "date": "2026-11-15",
+  "history": [
+   {
+    "date": "2026-11-15",
+    "price": 748
+   }
+  ]
+ },
+ {
+  "name": "吉隆坡 到 首尔",
+  "origin": "KUL",
+  "destination": "SEL",
+  "depart": "2026-12",
+  "currency": "myr",
+  "price": 705,
+  "airline": "AK",
+  "departure_at": "2026-12-01T15:25:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0112SEL1?t=7C17961387001796244000001695KULDADICN_c339e1fbf70531d40af312f34d28ed56_14289&search_date=09112026&expected_price_uuid=01a1c061-648a-8031-639b-61d9e91fce9e&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=3gc1d4XLTGrdwKSlgteROQ&expected_price_source=share&expected_price_currency=myr&expected_price=705",
+  "date": "2026-11-15",
+  "history": [
+   {
+    "date": "2026-11-15",
+    "price": 705
+   }
+  ]
+ },
+ {
+  "name": "吉隆坡 到 香港",
+  "origin": "KUL",
+  "destination": "HKG",
+  "depart": "2026-12",
+  "currency": "myr",
+  "price": 494,
+  "airline": "AK",
+  "departure_at": "2026-12-04T13:45:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0412HKG1?t=AK17963919001796406900000250KULHKG_17d98118edb29e9841482f0178b3f4f8_10018&search_date=15112026&expected_price_uuid=01a1dd55-7792-8030-2c94-80205845bbe4&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=GXNUkyx4WmQS5xZDN6oGKA&expected_price_source=share&expected_price_currency=myr&expected_price=494",
+  "date": "2026-11-15",
+  "history": [
+   {
+    "date": "2026-11-15",
+    "price": 494
+   }
+  ]
+ }
+]
