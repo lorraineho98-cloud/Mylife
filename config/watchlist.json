@@ -1,0 +1,5 @@
+{
+  "items": [
+    {"name": "示例商品 A", "url": "https://example.com/product-a", "volume_ml": 500, "target_price": 20.0}
+  ]
+}

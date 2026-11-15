@@ -1,0 +1,34 @@
+{
+  "_note": "search_urls 的网址格式是按常见写法填的，必须先运行 jobs-verify 确认能找到职位链接；找不到就改这里或把 enabled 设为 false。",
+  "keywords": ["export customer service", "export operations executive", "order management", "trade documentation", "import export customer service"],
+  "must_match_any": ["export", "customer service", "order management", "trade documentation", "customer care"],
+  "exclude_title": ["intern", "driver", "warehouse assistant", "forklift", "sales executive", "sales manager"],
+  "location_any": ["kuala lumpur", "wilayah persekutuan", "kl", "malaysia"],
+  "min_salary_month": 6000,
+  "keep_unknown_salary": true,
+  "max_age_days": 45,
+  "max_links_per_source": 25,
+  "delay_seconds": 2.0,
+  "sources": [
+    {"name": "Michael Page", "enabled": true,
+     "search_urls": ["https://www.michaelpage.com.my/jobs/{kw_slug}"],
+     "link_pattern": "/job-detail/[^\"'#?\\s<>]+"},
+    {"name": "Robert Walters", "enabled": true,
+     "search_urls": ["https://www.robertwalters.com.my/supplychainprocurement/jobs/customerservice.html"],
+     "link_pattern": "/supplychainprocurement/jobs/[^\"'#?\\s<>/]+/\\d+-[^\"'#?\\s<>]+\\.html"},
+    {"name": "Hiredly", "enabled": true,
+     "search_urls": ["https://my.hiredly.com/jobs?search-term={kw}&location=Kuala+Lumpur"],
+     "link_pattern": "/jobs/jobs-malaysia-[a-z0-9\\-]+"},
+    {"name": "Maukerja", "enabled": false,
+     "search_urls": [],
+     "link_pattern": ""}
+  ],
+  "seed_urls": [
+    "https://www.michaelpage.com.my/job-detail/senior-global-importexport-3pl4pl-vendor-management/ref/jn-072026-7055243",
+    "https://www.michaelpage.com.my/job-detail/global-trade-operations-international-order-management/ref/jn-072026-7064885",
+    "https://www.michaelpage.com.my/job-detail/trade-documentation-executive-regional-exposure-hybrid/ref/jn-072026-7067546",
+    "https://www.michaelpage.com.my/job-detail/export-operations-executive-global-shared-services/ref/jn-082026-7087237",
+    "https://my.hiredly.com/jobs/jobs-malaysia-fm-global-logistics-job-export-customer-service",
+    "https://careers.dovercorporation.com/job/Kuala-Lumpur-Customer-Care-and-Logistics-Manager/1173247001"
+  ]
+}
