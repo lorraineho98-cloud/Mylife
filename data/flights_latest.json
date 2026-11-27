@@ -9,7 +9,7 @@
   "airline": "OD",
   "departure_at": "2026-12-01T12:25:00+08:00",
   "url": "https://www.aviasales.com/search/KUL0112PEN1?t=OD17961279001796131500000060KULPEN_e24128993ad2fabe809a8c1b15381d4c_2247&search_date=24112026&expected_price_uuid=01a20e34-1d1f-8030-ef44-abc52dcf1233&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=wwyBSmfww6PG1AWpBEBroA&expected_price_source=share&expected_price_currency=myr&expected_price=113",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -58,6 +58,10 @@
    {
     "date": "2026-11-26",
     "price": 113
+   },
+   {
+    "date": "2026-11-27",
+    "price": 113
    }
   ]
  },
@@ -67,11 +71,11 @@
   "destination": "LGK",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 124,
+  "price": 126,
   "airline": "AK",
-  "departure_at": "2026-12-06T20:05:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0612LGK1?t=AK17965875001796591400000065KULLGK_cf92f1587e9330d437fbc9cbfca5d969_2491&search_date=26112026&expected_price_uuid=01a21686-cc0f-8031-2c2a-5b1f4ef381e3&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=7Qhe1vkImxyHpVLm8lOvYw&expected_price_source=share&expected_price_currency=myr&expected_price=124",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-05T19:10:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0512LGK1?t=AK17964978001796502000000070KULLGK_215a87c87fa7b3738c17fb44f404b838_2537&search_date=25112026&expected_price_uuid=01a21366-d26a-8030-a794-df666e963816&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=QChXsGRsmA8hDTfyxn1DJg&expected_price_source=share&expected_price_currency=myr&expected_price=126",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -120,6 +124,10 @@
    {
     "date": "2026-11-26",
     "price": 124
+   },
+   {
+    "date": "2026-11-27",
+    "price": 126
    }
   ],
   "live": {
@@ -135,11 +143,11 @@
   "destination": "BKI",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 353,
-  "airline": "AK",
-  "departure_at": "2026-12-02T17:30:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0212BKI1?t=AK17962326001796242500000165KULBKI_2f1ab5460f92116c1f712b09155a5b3b_7011&search_date=23112026&expected_price_uuid=01a20776-7374-8031-2c54-535f59d3b697&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=7KrPi-nS09iHbMc2NnI9gA&expected_price_source=share&expected_price_currency=myr&expected_price=352",
-  "date": "2026-11-26",
+  "price": 338,
+  "airline": "OD",
+  "departure_at": "2026-12-03T07:30:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0312BKI1?t=OD17962830001796292000000150KULBKI_8427947c5a66729d8a6015d0d150f7aa_6758&search_date=27112026&expected_price_uuid=01a21c46-7876-8030-eb4d-8ff5aa881e38&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=TqIid2kegfpRy6RGXTDlsQ&expected_price_source=share&expected_price_currency=myr&expected_price=338",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -188,6 +196,10 @@
    {
     "date": "2026-11-26",
     "price": 353
+   },
+   {
+    "date": "2026-11-27",
+    "price": 338
    }
   ]
  },
@@ -201,7 +213,7 @@
   "airline": "MH",
   "departure_at": "2026-12-07T19:35:00+08:00",
   "url": "https://www.aviasales.com/search/KUL0712KCH1?t=MH17966721001796678700000110KULKCH_6477637a49c4702855c970615cafbb01_5145&search_date=25112026&expected_price_uuid=01a2117c-0d3d-8030-613e-ac763e9e039a&static_fare_key=TY%7CP1_JW%7CH0%7CL1_1_20%7CCH0%7CR0%7CTBC1&itinerary_key=gbSV9OfBobwHArsQT4GUwQ&expected_price_source=share&expected_price_currency=myr&expected_price=258",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -250,6 +262,10 @@
    {
     "date": "2026-11-26",
     "price": 258
+   },
+   {
+    "date": "2026-11-27",
+    "price": 258
    }
   ],
   "live": {
@@ -267,9 +283,9 @@
   "currency": "myr",
   "price": 347,
   "airline": "VZ",
-  "departure_at": "2026-12-29T21:30:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL2912BKK1?t=VZ17985798001798584300000135KULBKK_1e7fe8e2509221ccbad82bf38e9f7a45_6899&search_date=24112026&expected_price_uuid=01a20afe-feff-8030-e979-bafa52beb62c&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=2hie9VA5klNejHqL1OxGDQ&expected_price_source=share&expected_price_currency=myr&expected_price=347",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-16T21:30:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL1612BKK1?t=VZ17974566001797461100000135KULBKK_19349a403662461592f5066342e880f0_6915&search_date=27112026&expected_price_uuid=01a21bf6-6ee8-8030-e0d3-6123ca18794a&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=2hie9VA5klNejHqL1OxGDQ&expected_price_source=share&expected_price_currency=myr&expected_price=347",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -318,6 +334,10 @@
    {
     "date": "2026-11-26",
     "price": 347
+   },
+   {
+    "date": "2026-11-27",
+    "price": 347
    }
   ],
   "live": {
@@ -337,7 +357,7 @@
   "airline": "TR",
   "departure_at": "2026-12-29T11:15:00+08:00",
   "url": "https://www.aviasales.com/search/KUL2912TYO1?t=TR17985429001798592400000765KULSINHND_9bbb75322e293dcf730f26b5ebc96011_14906&search_date=24112026&expected_price_uuid=01a20d2f-0df4-8031-2b50-45b5fe89f303&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=xhzURaN6QbRYt3HrCUp6Ew&expected_price_source=share&expected_price_currency=myr&expected_price=749",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -386,6 +406,10 @@
    {
     "date": "2026-11-26",
     "price": 749
+   },
+   {
+    "date": "2026-11-27",
+    "price": 749
    }
   ],
   "live": {
@@ -405,7 +429,7 @@
   "airline": "VJ",
   "departure_at": "2026-12-30T11:30:00+08:00",
   "url": "https://www.aviasales.com/search/KUL3012SEL1?t=VJ17986302001798745100001855KULSGNICN_65b18d71f3d2b848e05433006152c1b1_13266&search_date=24112026&expected_price_uuid=01a20d91-6ad4-8031-6994-6ee1a2156054&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=RRL6EgBXvhsV4ujD9XUF2Q&expected_price_source=share&expected_price_currency=myr&expected_price=665",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -454,6 +478,10 @@
    {
     "date": "2026-11-26",
     "price": 665
+   },
+   {
+    "date": "2026-11-27",
+    "price": 665
    }
   ],
   "live": {
@@ -469,11 +497,11 @@
   "destination": "HKG",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 456,
-  "airline": "FY",
-  "departure_at": "2026-12-20T22:00:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL2012HKG1?t=UO17978040001797828300000405KULPENHKG_d6d71e5e25e3d6629afef3f0d33667b5_9112&search_date=19112026&expected_price_uuid=01a1f4e7-c752-8030-2387-27a60761813b&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Zm5Emf6iVVfIgwxcW0UFLA&expected_price_source=share&expected_price_currency=myr&expected_price=456",
-  "date": "2026-11-26",
+  "price": 458,
+  "airline": "AK",
+  "departure_at": "2026-12-30T08:05:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL3012HKG1?t=UO17986179001798692300001240KULPENHKG_e3b627b38565914a8566558448d6ba5e_9192&search_date=25112026&expected_price_uuid=01a21358-28a1-8031-28b2-c0ac16c91a85&static_fare_key=TY%7CP1%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=QCxIDTXjlTalBYl3hFr65w&expected_price_source=share&expected_price_currency=myr&expected_price=458",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -522,6 +550,10 @@
    {
     "date": "2026-11-26",
     "price": 456
+   },
+   {
+    "date": "2026-11-27",
+    "price": 458
    }
   ]
  },
@@ -535,7 +567,7 @@
   "airline": "D7",
   "departure_at": "2026-12-31T18:55:00+08:00",
   "url": "https://www.aviasales.com/search/KUL3112SHA1?t=D717987433001798762800000325KULPVG_828868bac7601f5103c053905b5d04fa_9345&search_date=25112026&expected_price_uuid=01a213d1-3490-8030-e986-3f7ae5b399c0&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=ML2umLaGiLV9x8VKtuKq3A&expected_price_source=share&expected_price_currency=myr&expected_price=467",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -584,6 +616,10 @@
    {
     "date": "2026-11-26",
     "price": 467
+   },
+   {
+    "date": "2026-11-27",
+    "price": 467
    }
   ],
   "live": {
@@ -603,7 +639,7 @@
   "airline": "D7",
   "departure_at": "2026-12-29T18:45:00+08:00",
   "url": "https://www.aviasales.com/search/KUL2912BJS1?t=D717985699001798593300000390KULPKX_b72ec6a07c69f35e1b6ecb4798758bcd_12973&search_date=25112026&expected_price_uuid=01a214c3-04f4-8030-ee21-8d181018d1d2&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=cl01IbtwkbrrRSBPTop3RA&expected_price_source=share&expected_price_currency=myr&expected_price=648",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -652,6 +688,10 @@
    {
     "date": "2026-11-26",
     "price": 648
+   },
+   {
+    "date": "2026-11-27",
+    "price": 648
    }
   ]
  },
@@ -665,7 +705,7 @@
   "airline": "OD",
   "departure_at": "2026-12-31T21:45:00+08:00",
   "url": "https://www.aviasales.com/search/KUL3112CAN1?t=OD17987535001798769400000265KULCAN_63dcc06ea6cf51b3b36784b467699672_8834&search_date=25112026&expected_price_uuid=01a213d0-f027-8031-6c7e-af2af3465754&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=uFxRG-W5O-K7dhWoDzAJ6w&expected_price_source=share&expected_price_currency=myr&expected_price=441",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -714,6 +754,10 @@
    {
     "date": "2026-11-26",
     "price": 441
+   },
+   {
+    "date": "2026-11-27",
+    "price": 441
    }
   ],
   "live": {
@@ -729,11 +773,11 @@
   "destination": "SZX",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 497,
+  "price": 461,
   "airline": "AK",
-  "departure_at": "2026-12-30T06:05:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL3012SZX1?t=AK17986107001798626000000255KULSZX_ff7771efc29adb89ff543c8c90759899_9917&search_date=22112026&expected_price_uuid=01a201b4-2ebb-8030-e9fc-61812bd8389a&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=8OMz1CxaHvQ8eO-cws0Cyg&expected_price_source=share&expected_price_currency=myr&expected_price=497",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-28T21:55:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL2812SZX1?t=AK17984949001798510200000255KULSZX_d188b4c9ada39c827d74fdcefc78c58e_9205&search_date=26112026&expected_price_uuid=01a218bd-70ab-8031-601b-9095fd62b7d0&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=5eheX9kOgflUO9mFtaWKGQ&expected_price_source=share&expected_price_currency=myr&expected_price=461",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -782,6 +826,10 @@
    {
     "date": "2026-11-26",
     "price": 497
+   },
+   {
+    "date": "2026-11-27",
+    "price": 461
    }
   ]
  },
@@ -795,7 +843,7 @@
   "airline": "OD",
   "departure_at": "2026-12-30T21:35:00+08:00",
   "url": "https://www.aviasales.com/search/KUL3012CTU1?t=OD17986665001798683600000285KULTFU_a78a8017f86bf72caa43a02d477c497d_9550&search_date=22112026&expected_price_uuid=01a204b3-6a43-8030-218d-4be1c1358a77&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=YKMGXtn7Jnj__dfQnVJrrA&expected_price_source=share&expected_price_currency=myr&expected_price=482",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -844,6 +892,10 @@
    {
     "date": "2026-11-26",
     "price": 482
+   },
+   {
+    "date": "2026-11-27",
+    "price": 482
    }
   ],
   "live": {
@@ -863,7 +915,7 @@
   "airline": "CA",
   "departure_at": "2026-12-21T17:25:00+08:00",
   "url": "https://www.aviasales.com/search/KUL2112XMN1?t=CA17978739001797953400001325KULPEKXMN_90b457eb315d4c3e42d1a23372e6f2bb_15149&search_date=25112026&expected_price_uuid=01a21191-a5e4-8030-e08f-2d4ab1286874&static_fare_key=TY%7CP1%7CH1%7CL1_1_23%7CCH0%7CR0%7CTBC1&itinerary_key=Tt2yKF1Exw62XE_g7roLkQ&expected_price_source=share&expected_price_currency=myr&expected_price=761",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-17",
@@ -904,6 +956,10 @@
    {
     "date": "2026-11-26",
     "price": 761
+   },
+   {
+    "date": "2026-11-27",
+    "price": 761
    }
   ]
  },
@@ -917,7 +973,7 @@
   "airline": "AK",
   "departure_at": "2026-12-18T12:10:00+08:00",
   "url": "https://www.aviasales.com/search/KUL1812MFM1?t=AK17975958001797610200000240KULMFM_ff0a89576fdb48b86c9e416d48e8de34_12588&search_date=22112026&expected_price_uuid=01a204d9-320b-8031-6e12-9080387036c7&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4Xd3DmxiLyXF5v_bsSI7Aw&expected_price_source=share&expected_price_currency=myr&expected_price=635",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -966,6 +1022,10 @@
    {
     "date": "2026-11-26",
     "price": 635
+   },
+   {
+    "date": "2026-11-27",
+    "price": 635
    }
   ]
  },
@@ -975,11 +1035,11 @@
   "destination": "TPE",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 461,
-  "airline": "TR",
-  "departure_at": "2026-12-30T19:15:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL3012TPE1?t=TR17986581001798695300000620KULSINTPE_1fcddf9c2e738f94494169831580aada_9195&search_date=24112026&expected_price_uuid=01a20e64-b033-8030-ebd1-ccf5309e91fa&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=rYBATABP7-R7ln_QhrygzA&expected_price_source=share&expected_price_currency=myr&expected_price=461",
-  "date": "2026-11-26",
+  "price": 420,
+  "airline": "OD",
+  "departure_at": "2026-12-31T09:55:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL3112TPE1?t=OD17987109001798728900000300KULTPE_34911bf7012548cc848be4eeb4c9b358_8379&search_date=27112026&expected_price_uuid=01a21bc2-88cf-8030-e267-dd6e327e6ade&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=4BMTEuaqbKmpscpkpez31w&expected_price_source=share&expected_price_currency=myr&expected_price=420",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1028,8 +1088,18 @@
    {
     "date": "2026-11-26",
     "price": 461
+   },
+   {
+    "date": "2026-11-27",
+    "price": 420
    }
-  ]
+  ],
+  "live": {
+   "price": 454.0,
+   "currency": "MYR",
+   "checked_at": "2026-11-27",
+   "departure_date": "2026-12-31"
+  }
  },
  {
   "name": "吉隆坡 到 新加坡",
@@ -1037,11 +1107,11 @@
   "destination": "SIN",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 168,
-  "airline": "OD",
-  "departure_at": "2026-12-03T08:15:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0312SIN1?t=OD17962857001796289600000065KULSIN_e1aa8f871de301fac08e0bd00916b512_3373&search_date=26112026&expected_price_uuid=01a21680-ddbf-8031-2d72-64399ee32ad4&static_fare_key=TY%7CP0%7CH1%7CL1_1_10%7CCH0%7CR0%7CTBC1&itinerary_key=84RSQGu5cvgQhGDX-nnR7A&expected_price_source=share&expected_price_currency=myr&expected_price=168",
-  "date": "2026-11-26",
+  "price": 166,
+  "airline": "AK",
+  "departure_at": "2026-12-10T06:05:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL1012SIN1?t=AK17968827001796886900000070KULSIN_202708806f905c69e9a3310ed2230250_3314&search_date=26112026&expected_price_uuid=01a21918-6d88-8030-e1e5-2794f6380660&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=Fr7Kud7reJrAQvYcE3kQBA&expected_price_source=share&expected_price_currency=myr&expected_price=166",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1090,6 +1160,10 @@
    {
     "date": "2026-11-26",
     "price": 168
+   },
+   {
+    "date": "2026-11-27",
+    "price": 166
    }
   ],
   "live": {
@@ -1105,11 +1179,11 @@
   "destination": "JKT",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 281,
-  "airline": "OD",
-  "departure_at": "2026-12-02T21:55:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0212JKT1?t=OD17962485001796253000000135KULCGK_41537a810346f8e55ac05a764261e2a7_5574&search_date=23112026&expected_price_uuid=01a20a5c-7ff9-8030-2f51-991ef5164aaa&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=7oKCgM8BswIc0bSEDwYO2Q&expected_price_source=share&expected_price_currency=myr&expected_price=280",
-  "date": "2026-11-26",
+  "price": 263,
+  "airline": "AK",
+  "departure_at": "2026-12-01T17:05:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0112JKT1?t=AK17961447001796149200000135KULCGK_aee1f696beb2289817fabd20941b1762_5244&search_date=26112026&expected_price_uuid=01a2189a-0bc5-8030-af4a-a5262a961ae5&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=bV6Q6MHmkjfeHKPASs5jIA&expected_price_source=share&expected_price_currency=myr&expected_price=263",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1158,6 +1232,10 @@
    {
     "date": "2026-11-26",
     "price": 281
+   },
+   {
+    "date": "2026-11-27",
+    "price": 263
    }
   ]
  },
@@ -1167,11 +1245,11 @@
   "destination": "DPS",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 253,
+  "price": 261,
   "airline": "OD",
-  "departure_at": "2026-12-03T16:45:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0312DPS1?t=OD17963163001796327700000190KULDPS_a8f2ffcf7f6e84fbb7619bbc8777a855_5067&search_date=26112026&expected_price_uuid=01a2170b-f57e-8030-24fb-a3fe29e47619&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=d-5Y_-CtUDaZL2XroQMpwA&expected_price_source=share&expected_price_currency=myr&expected_price=253",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-01T17:15:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0112DPS1?t=OD17961453001796156700000190KULDPS_adeb06da119c2a4dda55f68a15b6c4bd_5202&search_date=27112026&expected_price_uuid=01a21c02-6993-8031-2bb2-8d2d5b087c84&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=twfW76tY_bEfiVRbFkWdDg&expected_price_source=share&expected_price_currency=myr&expected_price=261",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1220,6 +1298,10 @@
    {
     "date": "2026-11-26",
     "price": 253
+   },
+   {
+    "date": "2026-11-27",
+    "price": 261
    }
   ],
   "live": {
@@ -1235,11 +1317,11 @@
   "destination": "HAN",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 441,
-  "airline": "OD",
-  "departure_at": "2026-12-01T10:30:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0112HAN1?t=OD17961210001796162100000745KULDADHAN_80144c544e0e6512a9750f3207b04848_8848&search_date=26112026&expected_price_uuid=01a21668-3b12-8030-aafc-6aa7cbba9a3b&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=82xFz2bsfaf90C0WbfJ4yg&expected_price_source=share&expected_price_currency=myr&expected_price=441",
-  "date": "2026-11-26",
+  "price": 460,
+  "airline": "AK",
+  "departure_at": "2026-12-01T15:25:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0112HAN1?t=AK17961387001796156700000360KULDADHAN_558c3210ffffdd65f8b7df45e12b1dd6_9171&search_date=26112026&expected_price_uuid=01a21a10-4e9b-8030-6b14-510819c753a7&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=cQlbrSZPwpymwlwBT9QUlw&expected_price_source=share&expected_price_currency=myr&expected_price=460",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1288,6 +1370,10 @@
    {
     "date": "2026-11-26",
     "price": 441
+   },
+   {
+    "date": "2026-11-27",
+    "price": 460
    }
   ],
   "live": {
@@ -1307,7 +1393,7 @@
   "airline": "VJ",
   "departure_at": "2026-12-31T13:35:00+08:00",
   "url": "https://www.aviasales.com/search/KUL3112SGN1?t=VJ17987241001798727400000115KULSGN_fab6e3c010c7112d995013cccca21b0b_6728&search_date=25112026&expected_price_uuid=01a21037-a798-8031-28e5-5cd1a05e5b19&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=EzxqNfzP8WpSmrUTpSpsYg&expected_price_source=share&expected_price_currency=myr&expected_price=338",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1356,6 +1442,10 @@
    {
     "date": "2026-11-26",
     "price": 338
+   },
+   {
+    "date": "2026-11-27",
+    "price": 338
    }
   ]
  },
@@ -1367,9 +1457,9 @@
   "currency": "myr",
   "price": 275,
   "airline": "AK",
-  "departure_at": "2026-12-30T17:50:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL3012HKT1?t=AK17986530001798655400000100KULHKT_cd7182796d0d110a1577767eff82ecd6_5514&search_date=25112026&expected_price_uuid=01a2149e-d527-8030-ee77-30f5c5598474&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=6iaPgaqVEDAjM2TPijzh4w&expected_price_source=share&expected_price_currency=myr&expected_price=275",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-09T17:50:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0912HKT1?t=AK17968386001796841000000100KULHKT_29045640b6d471abce9c3f8325236d29_5479&search_date=27112026&expected_price_uuid=01a21c0a-5f4f-8031-6ec5-4a4fffbd12fa&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH1%7CR0%7CTBC0&itinerary_key=6iaPgaqVEDAjM2TPijzh4w&expected_price_source=share&expected_price_currency=myr&expected_price=275",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1418,6 +1508,10 @@
    {
     "date": "2026-11-26",
     "price": 275
+   },
+   {
+    "date": "2026-11-27",
+    "price": 275
    }
   ]
  },
@@ -1431,7 +1525,7 @@
   "airline": "PR",
   "departure_at": "2026-12-31T02:20:00+08:00",
   "url": "https://www.aviasales.com/search/KUL3112MNL1?t=PR17986836001798698000000240KULMNL_e72335fd880c5a084bc38fba85a29de3_12294&search_date=24112026&expected_price_uuid=01a20ecc-ce8d-8030-a717-64b76a01bc49&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=NQQ1NKVhk7DaW4qNB-AYbA&expected_price_source=share&expected_price_currency=myr&expected_price=616",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1480,6 +1574,10 @@
    {
     "date": "2026-11-26",
     "price": 616
+   },
+   {
+    "date": "2026-11-27",
+    "price": 616
    }
   ]
  },
@@ -1493,7 +1591,7 @@
   "airline": "OD",
   "departure_at": "2026-12-31T23:00:00+08:00",
   "url": "https://www.aviasales.com/search/KUL3112OSA1?t=OD17987580001798784700000385KULKIX_1ca05588ba34b731af7fa43a091d8ecd_15436&search_date=24112026&expected_price_uuid=01a20f03-3ab3-8030-e61e-2da2a1af27b8&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=zadL43nl3q9kVLCI8VMw9g&expected_price_source=share&expected_price_currency=myr&expected_price=774",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1542,6 +1640,10 @@
    {
     "date": "2026-11-26",
     "price": 774
+   },
+   {
+    "date": "2026-11-27",
+    "price": 774
    }
   ]
  },
@@ -1551,11 +1653,11 @@
   "destination": "SYD",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 905,
+  "price": 931,
   "airline": "TR",
-  "departure_at": "2026-12-01T19:15:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0112SYD1?t=TR17961525001796237400001235KULSINSYD_01f5263345ad2ece4f55a3e1631299b5_18087&search_date=26112026&expected_price_uuid=01a21700-2ea5-8031-6b6e-e6324a523ebc&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=M7J25F4TRXrK1kt_-rqMMQ&expected_price_source=share&expected_price_currency=myr&expected_price=905",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-14T22:00:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL1412SYD1?t=TR17972856001797360600001070KULSINSYD_582987894813e03ed4929b22dc2d40e6_18617&search_date=25112026&expected_price_uuid=01a212b7-da53-8030-6e3e-6c0a106e7ab6&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=N1f6fDibO01oDFZ_qI9Ujw&expected_price_source=share&expected_price_currency=myr&expected_price=931",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1604,6 +1706,10 @@
    {
     "date": "2026-11-26",
     "price": 905
+   },
+   {
+    "date": "2026-11-27",
+    "price": 931
    }
   ]
  },
@@ -1613,11 +1719,11 @@
   "destination": "MEL",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 635,
+  "price": 632,
   "airline": "OD",
   "departure_at": "2026-12-04T17:30:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0412MEL1?t=OD17964054001796446800000510KULMEL_136a884b9feee3187bdad3942df54fb0_12653&search_date=25112026&expected_price_uuid=01a211a7-6e83-8030-a240-4e9e7ebcfc22&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=e_WjMU9a7JGpXIaOCVv8pA&expected_price_source=share&expected_price_currency=myr&expected_price=635",
-  "date": "2026-11-26",
+  "url": "https://www.aviasales.com/search/KUL0412MEL1?t=OD17964054001796446800000510KULMEL_136a884b9feee3187bdad3942df54fb0_12605&search_date=26112026&expected_price_uuid=01a21945-2f38-8030-600d-fa7372c3efd5&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=e_WjMU9a7JGpXIaOCVv8pA&expected_price_source=share&expected_price_currency=myr&expected_price=632",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1666,13 +1772,17 @@
    {
     "date": "2026-11-26",
     "price": 635
+   },
+   {
+    "date": "2026-11-27",
+    "price": 632
    }
   ],
   "live": {
-   "price": 665.0,
+   "price": 673.0,
    "currency": "MYR",
-   "checked_at": "2026-11-21",
-   "departure_date": "2026-12-15"
+   "checked_at": "2026-11-27",
+   "departure_date": "2026-12-04"
   }
  },
  {
@@ -1685,7 +1795,7 @@
   "airline": "WY",
   "departure_at": "2026-12-12T21:25:00+08:00",
   "url": "https://www.aviasales.com/search/KUL1212LON1?t=WY17971107001797141300000990KULMCTLHR_3a26b96a9cca6fccc739bdbab6f86baa_17525&search_date=25112026&expected_price_uuid=01a2100c-3f8f-8030-62c8-b1ef999bbd70&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=SX-OqVRVl1jNdzOsNGI7Iw&expected_price_source=share&expected_price_currency=myr&expected_price=880",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1734,6 +1844,10 @@
    {
     "date": "2026-11-26",
     "price": 880
+   },
+   {
+    "date": "2026-11-27",
+    "price": 880
    }
   ]
  },
@@ -1747,7 +1861,7 @@
   "airline": "WY",
   "departure_at": "2026-12-17T21:35:00+08:00",
   "url": "https://www.aviasales.com/search/KUL1712PAR1?t=WY17975433001797622500001740KULMCTCDG_10476ad689745c9962f72fc9b0019743_20214&search_date=25112026&expected_price_uuid=01a21281-3027-8030-6b44-3d09c15d6543&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=F5Ngq4RIKMustdxZLB7ufQ&expected_price_source=share&expected_price_currency=myr&expected_price=1009",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1796,6 +1910,10 @@
    {
     "date": "2026-11-26",
     "price": 1009
+   },
+   {
+    "date": "2026-11-27",
+    "price": 1009
    }
   ],
   "live": {
@@ -1811,11 +1929,11 @@
   "destination": "DXB",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 1154,
+  "price": 1155,
   "airline": "AI",
-  "departure_at": "2026-12-15T06:00:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL1512DXB1?t=AI17973144001797361200001020KULDELDXB_9dd5f93befda90b4bbdd5c0de20fa5c8_23135&search_date=26112026&expected_price_uuid=01a2168c-4c07-8030-658a-f25fb4a75bf1&static_fare_key=TY%7CP0%7CH1%7CL1_1_25%7CCH0%7CR0%7CTBC1&itinerary_key=yQWVBi96mnMzPQpCwqP45A&expected_price_source=share&expected_price_currency=myr&expected_price=1154",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-23T06:00:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL2312DXB1?t=AI17980056001798107300001935KULDELDXB_2ff008835ebbdab79171db21ba9d0b8f_23003&search_date=25112026&expected_price_uuid=01a210cd-76fc-8030-a7d1-28faeb182283&static_fare_key=TY%7CP1%7CH1%7CL1_1_25%7CCH0%7CR0%7CTBC1&itinerary_key=jzILiE1iHiJdNPnsONc-rg&expected_price_source=share&expected_price_currency=myr&expected_price=1155",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1864,6 +1982,10 @@
    {
     "date": "2026-11-26",
     "price": 1154
+   },
+   {
+    "date": "2026-11-27",
+    "price": 1155
    }
   ]
  },
@@ -1873,11 +1995,11 @@
   "destination": "IST",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 1007,
+  "price": 949,
   "airline": "D7",
-  "departure_at": "2026-12-30T09:20:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL3012IST1?t=D717986224001798646700000705KULSAW_759efba06857203b657f5b638207ea29_20173&search_date=25112026&expected_price_uuid=01a2149e-b0c4-8030-2089-0a58f113146e&static_fare_key=TY%7CP1_JW%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=-LDvHinb73O1Pib--NriJg&expected_price_source=share&expected_price_currency=myr&expected_price=1007",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-28T09:20:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL2812IST1?t=D717984496001798473900000705KULSAW_da82761464375eb4123f5500b3a627d9_18919&search_date=26112026&expected_price_uuid=01a21a27-9bdb-8031-27f0-30035c921273&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=-LDvHinb73O1Pib--NriJg&expected_price_source=share&expected_price_currency=myr&expected_price=949",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1926,6 +2048,10 @@
    {
     "date": "2026-11-26",
     "price": 1007
+   },
+   {
+    "date": "2026-11-27",
+    "price": 949
    }
   ]
  },
@@ -1939,7 +2065,7 @@
   "airline": "BG",
   "departure_at": "2026-12-16T02:30:00+08:00",
   "url": "https://www.aviasales.com/search/KUL1612DEL1?t=BG17973882001797517200002300KULDACDEL_9eb7d813d373aa0a39175960ab616ef8_22020&search_date=25112026&expected_price_uuid=01a21129-c6f4-8030-ac7c-76e36c497256&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=vtChjrsrE39KlEeQkDZYJw&expected_price_source=share&expected_price_currency=myr&expected_price=1106",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -1988,6 +2114,10 @@
    {
     "date": "2026-11-26",
     "price": 1106
+   },
+   {
+    "date": "2026-11-27",
+    "price": 1106
    }
   ]
  },
@@ -1997,11 +2127,11 @@
   "destination": "CMB",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 504,
-  "airline": "OD",
-  "departure_at": "2026-12-07T19:45:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0712CMB1?t=OD17966727001796676300000210KULCMB_007c398e8f256fae2a9c5bf1ae25fcbf_10059&search_date=21112026&expected_price_uuid=01a20010-f5fa-8030-ac27-10fde6bdabdf&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=mBqaWkNO-fh0KVStcBbkpQ&expected_price_source=share&expected_price_currency=myr&expected_price=504",
-  "date": "2026-11-26",
+  "price": 493,
+  "airline": "AI",
+  "departure_at": "2026-12-31T06:00:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL3112CMB1?t=AI17986968001798800900001885KULDELCMB_3252b9037eea8406f9d61b0980254244_9835&search_date=27112026&expected_price_uuid=01a21be5-b740-8030-6f7e-b59d9c28d3d5&static_fare_key=TY%7CP1%7CH1%7CL1_1_30%7CCH0%7CR0%7CTBC1&itinerary_key=NiTDwSVYYX4vsH9vhabhAg&expected_price_source=share&expected_price_currency=myr&expected_price=493",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -2050,6 +2180,10 @@
    {
     "date": "2026-11-26",
     "price": 504
+   },
+   {
+    "date": "2026-11-27",
+    "price": 493
    }
   ]
  },
@@ -2059,11 +2193,11 @@
   "destination": "MLE",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 515,
-  "airline": "OD",
-  "departure_at": "2026-12-31T20:40:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL3112MLE1?t=OD17987496001798754100000255KULMLE_1e804c1e47f5d880c587b1f58f85916d_10304&search_date=25112026&expected_price_uuid=01a213d1-98ac-8031-6386-403214e8c701&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=DmKZn_2i9Cr2Dz3KdVDg4Q&expected_price_source=share&expected_price_currency=myr&expected_price=515",
-  "date": "2026-11-26",
+  "price": 520,
+  "airline": "AK",
+  "departure_at": "2026-12-10T19:05:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL1012MLE1?t=AK17969295001796934600000265KULMLE_8371f90a114a185f601a59359a383e41_10376&search_date=27112026&expected_price_uuid=01a21afb-372e-8031-2bf3-42a6b0920b7c&static_fare_key=TY%7CP0%7CH0%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=KUFWcy1iBEvv7TSu-wtNIw&expected_price_source=share&expected_price_currency=myr&expected_price=520",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -2112,6 +2246,10 @@
    {
     "date": "2026-11-26",
     "price": 515
+   },
+   {
+    "date": "2026-11-27",
+    "price": 520
    }
   ]
  },
@@ -2125,7 +2263,7 @@
   "airline": "KT",
   "departure_at": "2026-12-05T20:50:00+08:00",
   "url": "https://www.aviasales.com/search/KUL0512PNH1?t=KT17965038001796507700000125KULKTI_dfd69dce2eeb134ba05286587b688265_8792&search_date=24112026&expected_price_uuid=01a20ced-481d-8031-29d6-034cd283573f&static_fare_key=TY%7CP1_JW%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Ky-ddLM3i_WhNVKS8gT11w&expected_price_source=share&expected_price_currency=myr&expected_price=442",
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -2174,6 +2312,10 @@
    {
     "date": "2026-11-26",
     "price": 442
+   },
+   {
+    "date": "2026-11-27",
+    "price": 442
    }
   ]
  },
@@ -2183,11 +2325,11 @@
   "destination": "JED",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 875,
+  "price": 932,
   "airline": "EY",
-  "departure_at": "2026-12-09T09:30:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0912JED1?t=EY17968086001796899200001810KULAUHJED_a1b9ac22c6dbb714af8569190d122644_17422&search_date=25112026&expected_price_uuid=01a21123-0ec8-8031-229b-f75846fdb4b1&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=-7qAYPOwN46KVIttCrtgkA&expected_price_source=share&expected_price_currency=myr&expected_price=875",
-  "date": "2026-11-26",
+  "departure_at": "2026-12-02T09:30:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL0212JED1?t=EY17962038001796272500001445KULAUHJED_6bda44fd9b370f1e09db1fe367e6946b_18633&search_date=25112026&expected_price_uuid=01a21272-a176-8040-2f6f-7e35fa7cfb89&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=Vxq-z-_AU9h6SzGrW8xa0g&expected_price_source=share&expected_price_currency=myr&expected_price=932",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -2236,6 +2378,10 @@
    {
     "date": "2026-11-26",
     "price": 875
+   },
+   {
+    "date": "2026-11-27",
+    "price": 932
    }
   ]
  },
@@ -2245,11 +2391,11 @@
   "destination": "AKL",
   "depart": "2026-12",
   "currency": "myr",
-  "price": 1760,
-  "airline": "OD",
-  "departure_at": "2026-12-08T16:45:00+08:00",
-  "url": "https://www.aviasales.com/search/KUL0812AKL1?t=JQ17967483001796825400000985KULDPSSYDAKL_4da38ea3bd6f4856130af42c0840f0c7_35129&search_date=20112026&expected_price_uuid=01a1fa86-443d-8031-2008-4d0f1ab39be8&static_fare_key=TY%7CP1%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=0GCPvt_DjiVpI4c-BahuqA&expected_price_source=share&expected_price_currency=myr&expected_price=1760",
-  "date": "2026-11-26",
+  "price": 1826,
+  "airline": "D7",
+  "departure_at": "2026-12-11T17:55:00+08:00",
+  "url": "https://www.aviasales.com/search/KUL1112AKL1?t=D717970117001797099900001170KULMELAKL_c16d6d47f1cdb3c02b3e80c789f9d4b4_36415&search_date=26112026&expected_price_uuid=01a2198c-107e-8031-2b09-7f688b5c49a0&static_fare_key=TY%7CP0%7CH1%7CL0%7CCH0%7CR0%7CTBC0&itinerary_key=e3J8QlMhS8pX4r3jsZOyvQ&expected_price_source=share&expected_price_currency=myr&expected_price=1826",
+  "date": "2026-11-27",
   "history": [
    {
     "date": "2026-11-15",
@@ -2298,6 +2444,10 @@
    {
     "date": "2026-11-26",
     "price": 1760
+   },
+   {
+    "date": "2026-11-27",
+    "price": 1826
    }
   ]
  }
